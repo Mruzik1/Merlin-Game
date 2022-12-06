@@ -1,0 +1,2 @@
+name;spelltype;animationpath;animationwidth;animationheight;effect1,effect2
+iceball;projectile;resources/sprites/iceball.png;32;32;Damage-10,SpeedChange-20
