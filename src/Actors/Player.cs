@@ -22,26 +22,8 @@ namespace MyGame.Actors
         }
         
         public override void Update()
-        {
-            // Execute effects
-            for (int i = 0; i < effects.Count; ++i)
-                effects[i].Execute();
-
-            // move from side to side
-            if (Input.GetInstance().IsKeyDown(Input.Key.A))
-            {
-                ChangeDirection(ActorOrientation.FacingLeft);
-                animation.Start();
-                moveLeft.Execute();
-            }
-            else if (Input.GetInstance().IsKeyDown(Input.Key.D))
-            {
-                ChangeDirection(ActorOrientation.FacingRight);
-                animation.Start();
-                moveRight.Execute();
-            }
-            else
-                animation.Stop();
+        {  
+            base.Update();
 
             // cast some spell on C
             if (Input.GetInstance().IsKeyPressed(Input.Key.C))
@@ -64,14 +46,28 @@ namespace MyGame.Actors
 
                 Console.WriteLine($"Mana: {mana}");
             }
-
-            // jump
-            MakeJump(Input.GetInstance().IsKeyPressed(Input.Key.W));
         }
 
         public override void Walking()
         {
-
+            // move from side to side
+            if (Input.GetInstance().IsKeyDown(Input.Key.A))
+            {
+                ChangeDirection(ActorOrientation.FacingLeft);
+                animation.Start();
+                moveLeft.Execute();
+            }
+            else if (Input.GetInstance().IsKeyDown(Input.Key.D))
+            {
+                ChangeDirection(ActorOrientation.FacingRight);
+                animation.Start();
+                moveRight.Execute();
+            }
+            else
+                animation.Stop();
+            
+            // jump
+            MakeJump(Input.GetInstance().IsKeyPressed(Input.Key.W));
         }
 
         public void ChangeMana(int delta)

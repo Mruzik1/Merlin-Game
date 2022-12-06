@@ -60,14 +60,23 @@ namespace MyGame.Actors
 
         public override void Walking()
         {
+            if (Math.Abs(GetY() - player.GetY()) < triggeringZone && Math.Abs(GetX() - player.GetX()) < triggeringZone)
+                WalkTo(player.GetX(), player.GetY());
 
+            else
+            {
+                int oldX = GetX();
+
+                WalkTo(randomTarget[0], randomTarget[1]);
+
+                if (GetX() == oldX)
+                    randomTarget = new int[] {random.Next(0, 2000), random.Next(0, 400)};
+            }
         }
 
         public override void Update()
         {
-            // Execute effects
-            for (int i = 0; i < effects.Count; ++i)
-                effects[i].Execute();
+            base.Update();
         }
     }
 }

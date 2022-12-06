@@ -7,7 +7,9 @@ namespace MyGame.Actors
     public abstract class AbstractCharacter : AbstractActor, ICharacter
     {
         protected ISpeedStrategy speedStrategy;
+        protected ICharacterState state;
         protected int health;
+        protected int maxHealth;
         protected double speed;
         protected Message displayHealth;
         protected List<ICommand> effects;
@@ -20,6 +22,7 @@ namespace MyGame.Actors
         {
             this.speed = speed;
             this.health = health;
+            maxHealth = health;
 
             effects = new List<ICommand>();
 
@@ -29,13 +32,14 @@ namespace MyGame.Actors
             direction = ActorOrientation.FacingRight;
 
             speedStrategy = new NormalSpeedStrategy();
+            state = new LivingState(this);
         }
 
         public int GetHealth() => health;
 
         public void InitHealthMsg()
         {
-            displayHealth = new Message($"{this.health} HP", 0, -10, 15, Color.White, Merlin2d.Game.Enums.MessageDuration.Indefinite);
+            displayHealth = new Message($"{health} / {maxHealth} HP", -20, -20, 15, Color.White, Merlin2d.Game.Enums.MessageDuration.Indefinite);
             displayHealth.SetAnchorPoint(this);
             GetWorld().AddMessage(displayHealth);
         }
@@ -48,7 +52,7 @@ namespace MyGame.Actors
             if (health < 0)
                 health = 0;
 
-            displayHealth.SetText($"{health} HP");
+            displayHealth.SetText($"{health} / {maxHealth} HP");
         }
 
         public void SetJump(Jump jump)
@@ -58,7 +62,8 @@ namespace MyGame.Actors
 
         public void Die()
         {
-            RemoveFromWorld();
+            state = new DyingState(this);
+            displayHealth.SetText("DEAD");
         }
 
         public void AddEffect(ICommand effect)
@@ -69,6 +74,11 @@ namespace MyGame.Actors
         public void RemoveEffect(ICommand effect)
         {
             effects.Remove(effect);
+        }
+
+        public List<ICommand> GetEffects()
+        {
+            return effects;
         }
 
         public void SetSpeedStrategy(ISpeedStrategy strategy)
@@ -100,6 +110,15 @@ namespace MyGame.Actors
             }
             if (jump.IsJumping())
                 jump.Execute();
+        }
+
+        public override void Update()
+        {
+            state.Update();
+
+            // dying
+            if (health <= 0)
+                Die();
         }
 
         public abstract void Walking();

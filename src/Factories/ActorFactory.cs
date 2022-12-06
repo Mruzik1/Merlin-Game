@@ -20,7 +20,7 @@ namespace MyGame.Factories
 
             else if (actorType == "Enemy")
             {
-                actor = new Skeleton(x, y, 1.5, 200, 200);
+                actor = new Skeleton(x, y, 1.5, 200, 300);
                 actor.SetName(name);
                 actor.SetPhysics(true);
             }

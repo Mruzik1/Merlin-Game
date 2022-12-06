@@ -1,11 +1,11 @@
 namespace MyGame.Actors
 {
-    public class ModifiedSpeedStrategy : ISpeedStrategy
+    public class JumpSpeedStrategy : ISpeedStrategy
     {
         private double speedCoef;
         private double scalingCoef;
 
-        public ModifiedSpeedStrategy(double speedCoefficient, double scalingCoefficient)
+        public JumpSpeedStrategy(double speedCoefficient, double scalingCoefficient)
         {
             speedCoef = speedCoefficient;
             scalingCoef = scalingCoefficient;

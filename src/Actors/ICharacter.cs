@@ -10,5 +10,7 @@ namespace MyGame.Actors
         public void Die();
         public void AddEffect(ICommand effect);
         public void RemoveEffect(ICommand effect);
+        public List<ICommand> GetEffects();
+        public void Walking();
     }
 }

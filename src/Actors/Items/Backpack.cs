@@ -1,5 +1,5 @@
+using System.Collections;
 using Merlin2d.Game.Items;
-using Merlin2d.Game.Actors;
 
 
 namespace MyGame.Actors.Items
@@ -25,7 +25,7 @@ namespace MyGame.Actors.Items
 
         public void AddItem(IItem item)
         {
-            for (int i = 0; i < items.Length; ++i)
+            for (int i = 0; i < items.Count; ++i)
             {
                 if (items[i] == null)
                 {
@@ -39,7 +39,7 @@ namespace MyGame.Actors.Items
 
         public int GetCapacity()
         {
-            return items.Length;
+            return items.Count;
         }
 
         public IEnumerator<IItem> GetEnumerator()
@@ -75,7 +75,7 @@ namespace MyGame.Actors.Items
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return this.GetEnumerator();
+            return GetEnumerator();
         }
     }
 }

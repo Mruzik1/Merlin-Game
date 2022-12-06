@@ -36,7 +36,7 @@ namespace MyGame.Commands
         {
             jumping = true;
             dy = -1;
-            jumpSpeedStrategy = new ModifiedSpeedStrategy(6.5, 0.97);
+            jumpSpeedStrategy = new JumpSpeedStrategy(6.5, 0.97);
 
             this.startingY = startingY;
         }
