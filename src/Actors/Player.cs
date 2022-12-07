@@ -25,8 +25,8 @@ namespace MyGame.Actors
         {  
             base.Update();
 
-            // cast some spell on C
-            if (Input.GetInstance().IsKeyPressed(Input.Key.C))
+            // cast some spell on 1
+            if (Input.GetInstance().IsKeyPressed(Input.Key.KP_1))
             {
                 Console.WriteLine($"Casting Something... Mana: {mana}");
 
@@ -36,8 +36,8 @@ namespace MyGame.Actors
                 Console.WriteLine($"Mana: {mana}");
             }
 
-            // cast some spell on Z
-            if (Input.GetInstance().IsKeyPressed(Input.Key.Z))
+            // cast some spell on 2
+            if (Input.GetInstance().IsKeyPressed(Input.Key.KP_2))
             {
                 Console.WriteLine($"Casting Something... Mana: {mana}");
 
