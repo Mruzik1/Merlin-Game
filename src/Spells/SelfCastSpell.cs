@@ -32,13 +32,6 @@ namespace MyGame.Spells
 
         public int GetCost()
         {
-            // int totalCost = 0;
-
-            // foreach (ICommand effect in effects)
-            //     totalCost += (effect as AbstractEffect).GetCost();
-
-            // return (int)Math.Round(totalCost * 0.7);
-
             return (int)Math.Round(cost*0.7);
         }
 

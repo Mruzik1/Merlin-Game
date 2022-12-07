@@ -6,10 +6,12 @@ namespace MyGame.Commands
     public abstract class AbstractEffect: ICommand
     {
         protected ICharacter target;
+        protected string name;
 
-        public AbstractEffect()
+        public AbstractEffect(string name)
         {
             this.target = null;
+            this.name = name;
         }
 
         public void SetTarget(ICharacter target)

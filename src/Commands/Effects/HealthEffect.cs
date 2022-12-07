@@ -7,7 +7,12 @@ namespace MyGame.Commands
     {
         protected int hp;
 
-        public HealthEffect(int hp)
+        public HealthEffect(string name) : base(name)
+        {
+            
+        }
+
+        public void SetHp(int hp)
         {
             this.hp = hp;
         }

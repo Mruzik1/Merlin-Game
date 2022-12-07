@@ -1,2 +1,3 @@
-name;spelltype;animationpath;animationwidth;animationheight;effect1,effect2
-iceball;projectile;resources/sprites/iceball.png;32;32;Damage-10,SpeedChange-20
+name;spelltype;animationpath;animationwidth;animationheight;effects
+Painful Slowdown;projectile;resources/sprites/enemy.png;33;47;directdamage-20,speeddecrease-10000
+Healing;selfcast;;0;0;healovertime-2-10-1000

@@ -2,5 +2,13 @@
     {
         "name": "directdamage",
         "cost": 5
+    },
+    {
+        "name": "healovertime",
+        "cost": 10
+    },
+    {
+        "name": "speeddecrease",
+        "cost": 8
     }
 ]

@@ -10,7 +10,6 @@ namespace MyGame.Spells
         private ISpeedStrategy speedStrategy;
         private IWizard wizard;
         private IEnumerable<ICommand> effects;
-        private double speed;
         private int cost;
 
         public ProjectileSpell(IWizard wizard, int cost, Animation animation)
@@ -32,7 +31,7 @@ namespace MyGame.Spells
 
         public double GetSpeed()
         {
-            return speedStrategy.GetSpeed(speed);
+            return speedStrategy.GetSpeed(2);
         }
 
         public override void Update()
@@ -55,13 +54,6 @@ namespace MyGame.Spells
 
         public int GetCost()
         {
-            // int totalCost = 0;
-
-            // foreach (ICommand effect in effects)
-            //     totalCost += (effect as AbstractEffect).GetCost();
-
-            // return totalCost;
-
             return cost;
         }
 

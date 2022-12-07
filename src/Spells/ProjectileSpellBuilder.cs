@@ -8,21 +8,24 @@ namespace MyGame.Spells
     {
         private Dictionary<string, int> effectsCost;
         private Dictionary<string, ICommand> effectNames;
+        private SpellEffectFactory effectFactory;
         private List<ICommand> effects;
         private Animation animation;
         private int cost;
 
-        public ProjectileSpellBuilder(Dictionary<string, int> effectsCost, Dictionary<string, ICommand> effectNames)
+        public ProjectileSpellBuilder(Dictionary<string, int> effectsCost)
         {
             this.effectsCost = effectsCost;
-            this.effectNames = effectNames;
-
             this.effects = new List<ICommand>();
+            this.effectFactory = new SpellEffectFactory();
         }
 
         public ISpellBuilder AddEffect(string effectName)
         {
-            effects.Add(effectNames[effectName]);
+            string[] name = effectName.Split('-');
+            ICommand effect = effectFactory.Create(name);
+
+            effects.Add(effect);
             return this;
         }
 

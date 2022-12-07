@@ -8,10 +8,18 @@ namespace MyGame.Commands
         private int steps;
 
         // stepDuration should be in ms
-        public HealthOverTime(int hp, int steps, double stepDuration) : base(hp)
+        public HealthOverTime(string name) : base(name)
         {
-            this.stepDuration = (stepDuration / 1000) * 60;
             this.time = 0;
+        }
+
+        public void SetDuration(double duration)
+        {
+            stepDuration = (duration / 1000) * 60;
+        }
+
+        public void SetSteps(int steps)
+        {
             this.steps = steps;
         }
 

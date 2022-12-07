@@ -9,11 +9,15 @@ namespace MyGame.Commands
         private double duration;
         private double time;
 
-        public SpeedEffect(ISpeedStrategy newSpeedStrategy, double duration)
+        public SpeedEffect(string name, ISpeedStrategy newSpeedStrategy) : base(name)
         {
             this.speedStrategy = newSpeedStrategy;
-            this.duration = (duration / 1000) * 60;
             this.time = 0;
+        }
+
+        public void SetDuration(double duration)
+        {
+            this.duration = (duration / 1000) * 60;
         }
 
         public override void Execute()
