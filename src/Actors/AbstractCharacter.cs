@@ -1,6 +1,7 @@
 using MyGame.Commands;
-using Merlin2d.Game;
 using MyGame.Spells;
+using Merlin2d.Game;
+using Merlin2d.Game.Actors;
 
 
 namespace MyGame.Actors
@@ -12,8 +13,11 @@ namespace MyGame.Actors
         protected int health;
         protected int maxHealth;
         protected double speed;
+        protected int invincibilityTime;
+        protected int invincibility;
         protected Message displayHealth;
         protected List<ICommand> effects;
+        protected string[] damagers;
         protected Jump jump;
         protected ICommand moveLeft;
         protected ICommand moveRight;
@@ -23,7 +27,10 @@ namespace MyGame.Actors
         {
             this.speed = speed;
             this.health = health;
-            maxHealth = health;
+            maxHealth = this.health;
+
+            invincibility = 0;
+            damagers = Array.Empty<string>();
 
             effects = new List<ICommand>();
 
@@ -37,6 +44,16 @@ namespace MyGame.Actors
         }
 
         public int GetHealth() => health;
+
+        public void SetDamagers(string[] damagers)
+        {
+            this.damagers = damagers;
+        }
+
+        public void SetInvincibility(int invincibilityTime)
+        {
+            this.invincibilityTime = (invincibilityTime / 1000) * 60;
+        }
 
         public void InitHealthMsg()
         {
@@ -124,6 +141,20 @@ namespace MyGame.Actors
                 jump.Execute();
         }
 
+        public void TakeDamage()
+        {
+            foreach (string damagerName in damagers)
+            {
+                GetWorld().GetActors().ForEach(actor => {
+                    if (actor.GetName().Contains(damagerName) && IntersectsWithActor(actor))
+                    {
+                        invincibility = invincibilityTime;
+                        ChangeHealth(-20);
+                    }
+                });
+            }
+        }
+
         public override void Update()
         {
             state.Update();
@@ -131,6 +162,12 @@ namespace MyGame.Actors
             // dying
             if (health <= 0)
                 Die();
+
+            // Taking Damage
+            if (invincibility > 0)
+                invincibility--;
+            else
+                TakeDamage();
         }
 
         public abstract void Walking();

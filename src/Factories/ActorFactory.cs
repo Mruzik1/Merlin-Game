@@ -14,7 +14,11 @@ namespace MyGame.Factories
             if (actorType == "Player")
             {
                 actor = new Player(x, y, 2, 100, 100);
+                string[] enemies = {"John"};
+
                 actor.SetPhysics(true);
+                (actor as AbstractCharacter).SetInvincibility(1000);
+                (actor as AbstractCharacter).SetDamagers(enemies);
             }
 
             else if (actorType == "Enemy")
@@ -26,7 +30,9 @@ namespace MyGame.Factories
             else if (actorType == "BoxObj")
             {
                 actor = new Box(x, y);
+                
                 actor.SetPhysics(true);
+                (actor as AbstractCharacter).SetInvincibility(100);
             }
 
             else if (actorType == "DoorObj")
