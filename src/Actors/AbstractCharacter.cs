@@ -1,27 +1,26 @@
 using MyGame.Commands;
 using MyGame.Spells;
 using Merlin2d.Game;
-using Merlin2d.Game.Actors;
 
 
 namespace MyGame.Actors
 {
     public abstract class AbstractCharacter : AbstractActor, ICharacter
     {
-        protected ISpeedStrategy speedStrategy;
-        protected ICharacterState state;
+        private ISpeedStrategy speedStrategy;
+        private ICharacterState state;
         protected int health;
         protected int maxHealth;
         protected double speed;
-        protected int invincibilityTime;
-        protected int invincibility;
+        private int invincibilityTime;
+        private int invincibility;
         protected Message displayHealth;
-        protected List<ICommand> effects;
-        protected string[] damagers;
-        protected Jump jump;
+        private List<ICommand> effects;
+        private string[] damagers;
+        private Jump jump;
         protected ICommand moveLeft;
         protected ICommand moveRight;
-        protected ActorOrientation direction;
+        private ActorOrientation direction;
 
         public AbstractCharacter(double speed, int health)
         {
@@ -44,6 +43,8 @@ namespace MyGame.Actors
         }
 
         public int GetHealth() => health;
+
+        public bool IsInvincible() => invincibility > 0;
 
         public void SetDamagers(string[] damagers)
         {
@@ -70,11 +71,19 @@ namespace MyGame.Actors
 
         public void ChangeHealth(int delta)
         {
-            if (health > 0)
-                health += delta;
-
+            // negative health = immortality
             if (health < 0)
-                health = 0;
+                return;
+            
+            if (health+delta > 0 && health+delta <= maxHealth)
+                health += delta;
+            else if (health+delta <= 0)
+            {
+                Die();
+                return;
+            }
+            else if (health+delta > maxHealth)
+                health = maxHealth;
 
             if ((this as IWizard) == null)
                 displayHealth.SetText($"{health} / {maxHealth} HP");
@@ -90,7 +99,7 @@ namespace MyGame.Actors
         public void Die()
         {
             state = new DyingState(this);
-            displayHealth.SetText("DEAD");
+            displayHealth.SetText($"DEAD {GetName()}");
         }
 
         public void AddEffect(ICommand effect)
@@ -158,10 +167,6 @@ namespace MyGame.Actors
         public override void Update()
         {
             state.Update();
-
-            // dying
-            if (health <= 0)
-                Die();
 
             // Taking Damage
             if (invincibility > 0)

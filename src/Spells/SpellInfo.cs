@@ -25,8 +25,18 @@ namespace MyGame.Spells
                 name = values[0];
                 spellType = values[1] == "projectile" ? SpellType.Projectile : SpellType.SelfCast;
                 animationPath = values[2];
-                animationWidth = int.Parse(values[3]);
-                animationHeight= int.Parse(values[4]);
+
+                try
+                {
+                    animationWidth = int.Parse(values[3]);
+                    animationHeight = int.Parse(values[4]);
+                }
+                catch (FormatException)
+                {
+                    animationWidth = 0;
+                    animationHeight = 0;
+                }
+
                 effectNames = values[5].Split(',');
             }
             catch (ArgumentException e)

@@ -1,3 +1,6 @@
 name;spelltype;animationpath;animationwidth;animationheight;effects
-Painful Slowdown;projectile;resources/sprites/enemy.png;33;47;directdamage-20,speeddecrease-10000
-Healing;selfcast;;0;0;healovertime-2-10-1000
+iceball;projectile;resources/sprites/iceball.png;20;10;directdamage-20,speeddecrease-10000
+fireball;projectile;resources/sprites/fireball.png;20;10;damageovertime-2-10-300,speedincrease-2000
+healing;selfcast;;;;healovertime-2-10-500
+instant heal;selfcast;;;;instantheal-10
+speed boost;selfcast;;;;speedincrease-15000

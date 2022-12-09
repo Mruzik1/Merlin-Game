@@ -16,12 +16,32 @@ namespace MyGame.Spells
                 (effect as HealthEffect).SetHp(-int.Parse(effectName[1]));
             }
 
+            else if (effectName[0] == "instantheal")
+            {
+                effect = new HealthEffect(effectName[0]);
+                (effect as HealthEffect).SetHp(int.Parse(effectName[1]));
+            }
+
+            else if (effectName[0] == "damageovertime")
+            {
+                effect = new HealthOverTime(effectName[0]);
+                (effect as HealthOverTime).SetHp(-int.Parse(effectName[1]));
+                (effect as HealthOverTime).SetSteps(int.Parse(effectName[2]));
+                (effect as HealthOverTime).SetDuration(int.Parse(effectName[3]));
+            }
+
             else if (effectName[0] == "healovertime")
             {
                 effect = new HealthOverTime(effectName[0]);
                 (effect as HealthOverTime).SetHp(int.Parse(effectName[1]));
                 (effect as HealthOverTime).SetSteps(int.Parse(effectName[2]));
                 (effect as HealthOverTime).SetDuration(int.Parse(effectName[3]));
+            }
+
+            else if (effectName[0] == "speedincrease")
+            {
+                effect = new SpeedEffect(effectName[0], new FastSpeedStrategy());
+                (effect as SpeedEffect).SetDuration(int.Parse(effectName[1]));
             }
 
             else if (effectName[0] == "speeddecrease")

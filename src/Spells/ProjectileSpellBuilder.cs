@@ -1,4 +1,5 @@
 using Merlin2d.Game;
+using Merlin2d.Game.Actors;
 using MyGame.Commands;
 
 
@@ -44,6 +45,7 @@ namespace MyGame.Spells
         {
             ISpell spell = new ProjectileSpell(wizard, cost, animation);
             spell.AddEffects(effects);
+            wizard.GetWorld().AddActor((IActor)spell);
 
             return spell;
         }

@@ -8,12 +8,14 @@ namespace MyGame.Actors
     public class Player : AbstractCharacter, IWizard
     {
         private int mana;
+        private SpellDirector spellCaster;
 
         public Player(int x, int y, double speed, int health, int mana) : base(speed, health)
         {    
-            SetJump(new Jump(150, this));
-
             Animation animation = new Animation("resources/sprites/player.png", 28, 47);
+            spellCaster = new SpellDirector(this);
+
+            SetJump(new Jump(150, this));
             SetAnimation(animation);
             SetPosition(x, y);
             GetAnimation().Start();
@@ -25,19 +27,25 @@ namespace MyGame.Actors
         {  
             base.Update();
 
-            // cast some spell on 1
-            if (Input.GetInstance().IsKeyPressed(Input.Key.KP_1))
-            {
-                SpellDirector director = new SpellDirector(this);
-                Cast(director.Build("Painful Slowdown"));
-            }
+            // cast fireball
+            if (Input.GetInstance().IsKeyPressed(Input.Key.ONE))
+                Cast(spellCaster.Build("fireball"));
 
-            // cast some spell on 2
-            if (Input.GetInstance().IsKeyPressed(Input.Key.KP_2))
-            {
-                SpellDirector director = new SpellDirector(this);
-                Cast(director.Build("Healing"));
-            }
+            // cast iceball
+            else if (Input.GetInstance().IsKeyPressed(Input.Key.TWO))
+                Cast(spellCaster.Build("iceball"));
+
+            // cast healing over time
+            else if (Input.GetInstance().IsKeyPressed(Input.Key.THREE))
+                Cast(spellCaster.Build("healing"));
+
+            // cast instant heal
+            else if (Input.GetInstance().IsKeyPressed(Input.Key.FOUR))
+                Cast(spellCaster.Build("instant heal"));
+                        
+            // cast speed boost
+            else if (Input.GetInstance().IsKeyPressed(Input.Key.FIVE))
+                Cast(spellCaster.Build("speed boost"));
         }
 
         public override void Walking()
@@ -71,7 +79,10 @@ namespace MyGame.Actors
 
         public void Cast(ISpell spell)
         {   
-            if (mana >= spell.GetCost())
+            if (spell == null)
+                return;
+
+            if ((spell as ProjectileSpell) == null)
                 spell.ApplyEffects(this);
             
             displayHealth.SetText($"{health} / {maxHealth} HP\n{(this as IWizard).GetMana()} MP");

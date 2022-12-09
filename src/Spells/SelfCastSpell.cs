@@ -32,18 +32,13 @@ namespace MyGame.Spells
 
         public int GetCost()
         {
-            return (int)Math.Round(cost*0.7);
+            return cost;
         }
 
         public void ApplyEffects(ICharacter target)
         {
-            if (wizard.GetMana() >= GetCost())
-            {
-                foreach (ICommand effect in effects)
-                    (effect as AbstractEffect).SetTarget(target);
-                    
-                wizard.ChangeMana(-GetCost());
-            }
+            foreach (ICommand effect in effects)
+                (effect as AbstractEffect).SetTarget(target);
         }
     }
 }

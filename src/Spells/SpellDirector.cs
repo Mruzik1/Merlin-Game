@@ -26,16 +26,13 @@ namespace MyGame.Spells
             SpellInfo spell = spellsInfo[spellName];
             int cost = 0;
 
+            // create a builder
             if (spell.SpellType == SpellType.Projectile)
-            {
                 builder = new ProjectileSpellBuilder(effectsCost);
-                Animation animation = new Animation(spell.AnimationPath, spell.AnimationWidth, spell.AnimationHeight);
-                builder.SetAnimation(animation);
-            }
-            
-            if (spell.SpellType == SpellType.SelfCast)
+            else
                 builder = new SelfCastSpellBuilder(effectsCost);
 
+            // add effects, count total cost
             foreach(string rawName in spell.EffectNames)
             {
                 string[] name = rawName.Split('-');
@@ -44,6 +41,19 @@ namespace MyGame.Spells
                 builder.AddEffect(rawName);
             }
 
+            // if a wizard has no mana
+            if (wizard.GetMana() < cost)
+                return null;
+
+            // load animation if it's a projectile spell, could not do it earlier because it would cause some difficulties
+            if (spell.AnimationPath != "")
+            {
+                Animation animation = new Animation(spell.AnimationPath, spell.AnimationWidth, spell.AnimationHeight);
+                builder.SetAnimation(animation);
+            }
+
+            // reduce mana, set the spell cost
+            wizard.ChangeMana(-cost);
             builder.SetSpellCost(cost);
 
             return builder.CreateSpell(wizard);

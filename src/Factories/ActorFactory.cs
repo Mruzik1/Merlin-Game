@@ -13,7 +13,7 @@ namespace MyGame.Factories
 
             if (actorType == "Player")
             {
-                actor = new Player(x, y, 2, 100, 100);
+                actor = new Player(x, y, 2, 100, 20000);
                 string[] enemies = {"John"};
 
                 actor.SetPhysics(true);

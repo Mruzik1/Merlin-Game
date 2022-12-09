@@ -1,14 +1,26 @@
 [
     {
         "name": "directdamage",
-        "cost": 5
+        "cost": 7
+    },
+    {
+        "name": "instantheal",
+        "cost": 10
     },
     {
         "name": "healovertime",
         "cost": 10
     },
     {
+        "name": "damageovertime",
+        "cost": 10
+    },
+    {
         "name": "speeddecrease",
         "cost": 8
+    },
+    {
+        "name": "speedincrease",
+        "cost": 5
     }
 ]

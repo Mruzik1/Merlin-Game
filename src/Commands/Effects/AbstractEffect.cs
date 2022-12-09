@@ -22,6 +22,9 @@ namespace MyGame.Commands
 
         public void RemoveTarget()
         {
+            if (target == null)
+                return;
+            
             target.RemoveEffect(this);
             target = null;
         }

@@ -7,7 +7,7 @@ namespace MyGame.Actors
     {
         private Player player;
 
-        public Box(int x, int y) : base(1, 1)
+        public Box(int x, int y) : base(1, -1)
         {    
             Animation animation = new Animation("resources/sprites/box.png", 32, 32);
 

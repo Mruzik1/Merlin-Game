@@ -9,6 +9,7 @@ namespace MyGame.Spells
     {
         private ISpeedStrategy speedStrategy;
         private IWizard wizard;
+        private Move move;
         private IEnumerable<ICommand> effects;
         private int cost;
 
@@ -18,9 +19,19 @@ namespace MyGame.Spells
             this.cost = cost;
             this.wizard = wizard;
             
-            SetAnimation(animation);
+            SetSpeedStrategy(new NormalSpeedStrategy());
             SetPosition(wizard.GetX(), wizard.GetY());
+
+            SetAnimation(animation);
             GetAnimation().Start();
+
+            if ((wizard as AbstractCharacter).GetDirection() == ActorOrientation.FacingLeft)
+            {
+                move = new Move(this, -1, 0);
+                animation.FlipAnimation();
+            }
+            else 
+                move = new Move(this, 1, 0);
         }
 
 
@@ -31,12 +42,29 @@ namespace MyGame.Spells
 
         public double GetSpeed()
         {
-            return speedStrategy.GetSpeed(2);
+            return speedStrategy.GetSpeed(3);
         }
 
         public override void Update()
         {
-            
+            int oldX = GetX();
+            move.Execute();
+
+            // if facing a wall
+            if (GetX() == oldX)
+            {
+                RemoveFromWorld();
+                return;
+            }
+
+            GetWorld().GetActors().ForEach(actor => {
+                if (actor.GetName() != "Merlin" && (actor as ICharacter) != null
+                    && IntersectsWithActor(actor))
+                {
+                    ApplyEffects((ICharacter)actor);
+                    RemoveFromWorld();
+                }
+            });
         }
 
         public ISpell AddEffect(ICommand effect)
@@ -59,13 +87,8 @@ namespace MyGame.Spells
 
         public void ApplyEffects(ICharacter target)
         {
-            if (wizard.GetMana() >= GetCost())
-            {
-                foreach (ICommand effect in effects)
-                    (effect as AbstractEffect).SetTarget(target);
-                    
-                wizard.ChangeMana(-GetCost());
-            }
+            foreach (ICommand effect in effects)
+                (effect as AbstractEffect).SetTarget(target);
         }
     }
 }
