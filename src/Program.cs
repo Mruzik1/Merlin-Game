@@ -26,18 +26,24 @@ namespace MyGame
 
                 player.InitHealthMsg();
 
-                // init enemies
+                // init actors with specific names
                 w.GetActors().ForEach(actor => {
                     if (actor.GetName().Contains("John"))
                     {
-                        (actor as Skeleton).InitHealthMsg();
+                        (actor as AbstractCharacter).InitHealthMsg();
                         (actor as Skeleton).SetPlayer(player);
                     }
+                    else if (actor.GetName().Contains("Door"))
+                    {
+                        (actor as AbstractActor).MakeSolid(true);
+                    }
+                    else if (actor.GetName().Contains("PressurePlate") || actor.GetName().Contains("Switch"))
+                    {
+                        int mechanismNumber = actor.GetName().Length-2;
+                        IMechanism mechanism = (IMechanism)w.GetActors().Find(x => x.GetName().Contains($"Mechanism{actor.GetName()[mechanismNumber]}"));
+                        (actor as IUsable).SetMechanism(mechanism);
+                    }
                 });
-
-                // init other things
-                pressurePlate.SetMechanism(door);
-                door.MakeSolid(true);
 
                 // set the camera up
                 w.CenterOn(player);

@@ -91,7 +91,7 @@ namespace MyGame.Actors
         // makes an actor solid
         public void MakeSolid(bool solid)
         {
-            for (int i = 0; i < GetWidth()/16; ++i)
+            for (int i = 0; i < (int)Math.Ceiling((double)GetWidth()/16); ++i)
                 for (int j = 0; j < GetHeight()/16; ++j)
                 {
                     int x = (int)Math.Ceiling((double)GetX()/GetWorld().GetTileWidth())+i;

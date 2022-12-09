@@ -11,8 +11,8 @@ namespace MyGame.Actors
 
         public Door(int x, int y)
         {
-            animationOpen = new Animation("resources/sprites/crystal_off.png", 56, 56);
-            animationClosed = new Animation("resources/sprites/crystal_on.png", 56, 56);
+            animationOpen = new Animation("resources/sprites/door_open.png", 30, 70);
+            animationClosed = new Animation("resources/sprites/door_closed.png", 10, 70);
             isOpen = false;
             
             SetPosition(x, y);
@@ -31,7 +31,7 @@ namespace MyGame.Actors
             SetAnimation(animationOpen);
 
             GetAnimation().Start();
-            // MakeSolid(false);
+            MakeSolid(false);
         }
 
         public void Deactivate()

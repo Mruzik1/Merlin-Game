@@ -13,8 +13,8 @@ namespace MyGame.Actors
 
         public PressurePlate(int x, int y)
         {
-            animationPressed = new Animation("resources/sprites/source_on.png", 56, 60);
-            animationDefault = new Animation("resources/sprites/source_off.png", 56, 60);
+            animationPressed = new Animation("resources/sprites/pressed_plate.png", 40, 4);
+            animationDefault = new Animation("resources/sprites/released_plate.png", 40, 8);
             
             SetAnimation(animationDefault);
             SetPosition(x, y);
@@ -33,10 +33,12 @@ namespace MyGame.Actors
             }
             else
             {
-                actor = null;
+                intersector = null;
                 mechanism.Deactivate();
                 Release();
             }
+            
+            GetAnimation().Start();
         }
 
         public void SetMechanism(IMechanism mechanism)
@@ -47,13 +49,11 @@ namespace MyGame.Actors
         public void Press()
         {
             SetAnimation(animationPressed);
-            GetAnimation().Start();
         }
 
         public void Release()
         {
             SetAnimation(animationDefault);
-            GetAnimation().Start();
         }
 
         public override void Update()
@@ -61,8 +61,12 @@ namespace MyGame.Actors
             Use(intersector);
             
             GetWorld().GetActors().ForEach(actor => {
-                if (intersector == null && (actor as ICharacter) != null && IntersectsWithActor(actor))
+                if (intersector == null && 
+                    ((actor as ICharacter) != null || actor.GetName().Contains("Box")) &&
+                    IntersectsWithActor(actor))
+                {
                     intersector = actor;
+                }
             });
         }
     }

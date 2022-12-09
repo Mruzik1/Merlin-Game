@@ -36,6 +36,11 @@ namespace MyGame.Factories
                 actor = new PressurePlate(x, y);
                 actor.SetName(name);
             }
+            else if (actorType == "SwitchObj")
+            {
+                actor = new Lever(x, y);
+                actor.SetName(name);
+            }
             
             return actor;
         }
