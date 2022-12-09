@@ -88,6 +88,19 @@ namespace MyGame.Actors
 
         public bool RemovedFromWorld() => toBeRemoved;
 
+        // makes an actor solid
+        public void MakeSolid(bool solid)
+        {
+            for (int i = 0; i < GetWidth()/16; ++i)
+                for (int j = 0; j < GetHeight()/16; ++j)
+                {
+                    int x = (int)Math.Ceiling((double)GetX()/GetWorld().GetTileWidth())+i;
+                    int y = (int)Math.Ceiling((double)GetY()/GetWorld().GetTileHeight())+j;
+
+                    GetWorld().SetWall(x, y, solid);
+                }
+        }
+
         public abstract void Update();
     }
 }

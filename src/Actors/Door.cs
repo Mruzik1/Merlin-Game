@@ -25,25 +25,13 @@ namespace MyGame.Actors
             return isOpen;
         }
 
-        public void MakeSolid()
-        {
-            for (int i = 0; i < GetWidth()/16; ++i)
-                for (int j = 0; j < GetHeight()/16; ++j)
-                {
-                    int x = GetX()/GetWorld().GetTileWidth()+i;
-                    int y = GetY()/GetWorld().GetTileHeight()+j;
-
-                    GetWorld().SetWall(x, y, !isOpen);
-                }
-        }
-
         public void Activate()
         {
             isOpen = true;
             SetAnimation(animationOpen);
 
             GetAnimation().Start();
-            MakeSolid();
+            // MakeSolid(false);
         }
 
         public void Deactivate()
@@ -52,7 +40,7 @@ namespace MyGame.Actors
             SetAnimation(animationClosed);
 
             GetAnimation().Start();
-            MakeSolid();
+            MakeSolid(true);
         }
 
         public override void Update() {}

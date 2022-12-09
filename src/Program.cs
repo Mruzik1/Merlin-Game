@@ -37,7 +37,7 @@ namespace MyGame
 
                 // init other things
                 pressurePlate.SetMechanism(door);
-                door.MakeSolid();
+                door.MakeSolid(true);
 
                 // set the camera up
                 w.CenterOn(player);
