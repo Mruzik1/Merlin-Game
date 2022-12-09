@@ -21,15 +21,25 @@ namespace MyGame
 
             container.GetWorld().AddInitAction(w => {
                 Player player = (Player)w.GetActors().Find(x => x.GetName() == "Merlin");
-                TestActor testActor = (TestActor)w.GetActors().Find(x => x.GetName() == "Crystal");
-                Skeleton enemy = (Skeleton)w.GetActors().Find(x => x.GetName() == "John");
+                PressurePlate pressurePlate = (PressurePlate)w.GetActors().Find(x => x.GetName() == "PressurePlate");
+                Door door = (Door)w.GetActors().Find(x => x.GetName() == "Door");
 
                 player.InitHealthMsg();
-                enemy.InitHealthMsg();
 
-                // to perform actors collision
-                testActor.SetPlayer(player);
-                enemy.SetPlayer(player);
+                // init enemies
+                w.GetActors().ForEach(actor => {
+                    if (actor.GetName().Contains("John"))
+                    {
+                        (actor as Skeleton).InitHealthMsg();
+                        (actor as Skeleton).SetPlayer(player);
+                    }
+                });
+
+                // init other things
+                pressurePlate.SetMechanism(door);
+                door.MakeSolid();
+
+                // set the camera up
                 w.CenterOn(player);
             });
 

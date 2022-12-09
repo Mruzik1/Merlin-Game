@@ -25,10 +25,15 @@ namespace MyGame.Factories
                 actor.SetPhysics(true);
             }
 
-            // temporary actor to test IntersectsWithActor()
-            else if (actorType == "TestActor")
+            else if (actorType == "DoorObj")
             {
-                actor = new TestActor(x, y);
+                actor = new Door(x, y);
+                actor.SetName(name);
+            }
+
+            else if (actorType == "PressurePlateObj")
+            {
+                actor = new PressurePlate(x, y);
                 actor.SetName(name);
             }
             
