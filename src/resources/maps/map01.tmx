@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="150" height="50" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="13">
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="150" height="50" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="14">
  <tileset firstgid="1" name="tileset_basic" tilewidth="16" tileheight="16" tilecount="960" columns="32">
   <image source="tilesets/tileset_basic.png" width="512" height="480"/>
  </tileset>
@@ -14,13 +14,14 @@
   </data>
  </layer>
  <objectgroup id="3" name="objects">
+  <object id="13" name="Box1" type="BoxObj" x="642.667" y="430" width="32" height="32"/>
+  <object id="11" name="PressurePlate12" type="PressurePlateObj" x="821.956" y="765.512" width="40" height="8"/>
+  <object id="10" name="PressurePlate11" type="PressurePlateObj" x="161.456" y="764.512" width="40" height="8"/>
+  <object id="12" name="Switch11" type="SwitchObj" x="443.333" y="502.667" width="25" height="25"/>
+  <object id="9" name="DoorMechanism1" type="DoorObj" x="431.789" y="570.846" width="30" height="70"/>
   <object id="1" name="Merlin" type="Player" x="36.2191" y="703.69" width="38.0882" height="58.9753"/>
   <object id="2" name="John1" type="Enemy" x="2347.51" y="694.243" width="41.7742" height="63.8899"/>
   <object id="4" name="John2" type="Enemy" x="1380.51" y="314.243" width="41.7742" height="63.8899"/>
   <object id="7" name="John3" type="Enemy" x="1804.51" y="684.243" width="41.7742" height="63.8899"/>
-  <object id="9" name="DoorMechanism1" type="DoorObj" x="431.789" y="570.846" width="30" height="70"/>
-  <object id="10" name="PressurePlate11" type="PressurePlateObj" x="161.456" y="764.512" width="40" height="8"/>
-  <object id="11" name="PressurePlate12" type="PressurePlateObj" x="821.956" y="765.512" width="40" height="8"/>
-  <object id="12" name="Switch11" type="SwitchObj" x="443.333" y="502.667" width="25" height="25"/>
  </objectgroup>
 </map>

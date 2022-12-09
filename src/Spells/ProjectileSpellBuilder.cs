@@ -7,7 +7,6 @@ namespace MyGame.Spells
     public class ProjectileSpellBuilder : ISpellBuilder
     {
         private Dictionary<string, int> effectsCost;
-        private Dictionary<string, ICommand> effectNames;
         private SpellEffectFactory effectFactory;
         private List<ICommand> effects;
         private Animation animation;

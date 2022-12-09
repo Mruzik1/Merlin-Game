@@ -54,6 +54,8 @@ namespace MyGame.Actors
         public override void Update()
         {
             IActor player = GetWorld().GetActors().Find(x => x.GetName() == "Merlin");
+            if (player == null)
+                return;
 
             if (IntersectsWithActor(player) && Input.GetInstance().IsKeyPressed(Input.Key.E))
                 Use(player);

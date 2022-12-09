@@ -67,11 +67,8 @@ namespace MyGame.Actors
             int otherW = other.GetWidth();
             int otherH = other.GetHeight();
 
-            if (posX+animation.GetWidth() > otherX && otherX+otherW > posX &&
-                posY+animation.GetHeight() > otherY && otherY+otherH > posY)
-                return true;
-                
-            return false;
+            return posX+GetWidth() > otherX && otherX+otherW > posX &&
+                    posY+GetHeight() > otherY && otherY+otherH > posY;
         }
 
         public void SetPhysics(bool isPhysicsEnabled)

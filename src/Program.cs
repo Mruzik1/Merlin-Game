@@ -20,27 +20,31 @@ namespace MyGame
             container.SetCameraFollowStyle(CameraFollowStyle.CenteredInsideMapPreferTop);
 
             container.GetWorld().AddInitAction(w => {
+                // init player
                 Player player = (Player)w.GetActors().Find(x => x.GetName() == "Merlin");
-                PressurePlate pressurePlate = (PressurePlate)w.GetActors().Find(x => x.GetName() == "PressurePlate");
-                Door door = (Door)w.GetActors().Find(x => x.GetName() == "Door");
-
                 player.InitHealthMsg();
 
                 // init actors with specific names
                 w.GetActors().ForEach(actor => {
-                    if (actor.GetName().Contains("John"))
+                    string name = actor.GetName();
+
+                    if (name.Contains("John"))
                     {
                         (actor as AbstractCharacter).InitHealthMsg();
                         (actor as Skeleton).SetPlayer(player);
                     }
-                    else if (actor.GetName().Contains("Door"))
+                    else if (name.Contains("Box"))
+                    {
+                        (actor as Box).SetPlayer(player);
+                    }
+                    else if (name.Contains("Door"))
                     {
                         (actor as AbstractActor).MakeSolid(true);
                     }
-                    else if (actor.GetName().Contains("PressurePlate") || actor.GetName().Contains("Switch"))
+                    else if (name.Contains("PressurePlate") || name.Contains("Switch"))
                     {
-                        int mechanismNumber = actor.GetName().Length-2;
-                        IMechanism mechanism = (IMechanism)w.GetActors().Find(x => x.GetName().Contains($"Mechanism{actor.GetName()[mechanismNumber]}"));
+                        int mechanismNumber = name.Length-2;
+                        IMechanism mechanism = (IMechanism)w.GetActors().Find(x => x.GetName().Contains($"Mechanism{name[mechanismNumber]}"));
                         (actor as IUsable).SetMechanism(mechanism);
                     }
                 });

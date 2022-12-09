@@ -28,23 +28,15 @@ namespace MyGame.Actors
             // cast some spell on 1
             if (Input.GetInstance().IsKeyPressed(Input.Key.KP_1))
             {
-                Console.WriteLine($"Casting Something... Mana: {mana}");
-
                 SpellDirector director = new SpellDirector(this);
                 Cast(director.Build("Painful Slowdown"));
-
-                Console.WriteLine($"Mana: {mana}");
             }
 
             // cast some spell on 2
             if (Input.GetInstance().IsKeyPressed(Input.Key.KP_2))
             {
-                Console.WriteLine($"Casting Something... Mana: {mana}");
-
                 SpellDirector director = new SpellDirector(this);
                 Cast(director.Build("Healing"));
-
-                Console.WriteLine($"Mana: {mana}");
             }
         }
 
@@ -75,15 +67,14 @@ namespace MyGame.Actors
             mana += delta;
         }
 
-        public int GetMana()
-        {
-            return mana;
-        }
+        public int GetMana() => mana;
 
         public void Cast(ISpell spell)
         {   
             if (mana >= spell.GetCost())
                 spell.ApplyEffects(this);
+            
+            displayHealth.SetText($"{health} / {maxHealth} HP\n{(this as IWizard).GetMana()} MP");
         }
     }
 }

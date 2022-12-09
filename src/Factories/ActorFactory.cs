@@ -14,33 +14,37 @@ namespace MyGame.Factories
             if (actorType == "Player")
             {
                 actor = new Player(x, y, 2, 100, 100);
-                actor.SetName(name);
                 actor.SetPhysics(true);
             }
 
             else if (actorType == "Enemy")
             {
                 actor = new Skeleton(x, y, 1.5, 200, 300);
-                actor.SetName(name);
+                actor.SetPhysics(true);
+            }
+
+            else if (actorType == "BoxObj")
+            {
+                actor = new Box(x, y);
                 actor.SetPhysics(true);
             }
 
             else if (actorType == "DoorObj")
             {
                 actor = new Door(x, y);
-                actor.SetName(name);
             }
 
             else if (actorType == "PressurePlateObj")
             {
                 actor = new PressurePlate(x, y);
-                actor.SetName(name);
             }
             else if (actorType == "SwitchObj")
             {
                 actor = new Lever(x, y);
-                actor.SetName(name);
             }
+
+            if (actor != null)
+                actor.SetName(name);
             
             return actor;
         }

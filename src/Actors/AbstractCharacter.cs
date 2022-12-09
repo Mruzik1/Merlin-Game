@@ -1,5 +1,6 @@
 using MyGame.Commands;
 using Merlin2d.Game;
+using MyGame.Spells;
 
 
 namespace MyGame.Actors
@@ -39,7 +40,13 @@ namespace MyGame.Actors
 
         public void InitHealthMsg()
         {
-            displayHealth = new Message($"{health} / {maxHealth} HP", -20, -20, 15, Color.White, Merlin2d.Game.Enums.MessageDuration.Indefinite);
+            if ((this as IWizard) == null)
+                displayHealth = new Message($"{health} / {maxHealth} HP",
+                -20, -20, 15, Color.Black, Merlin2d.Game.Enums.MessageDuration.Indefinite);
+            else
+                displayHealth = new Message($"{health} / {maxHealth} HP\n{(this as IWizard).GetMana()} MP",
+                -20, -40, 15, Color.Black, Merlin2d.Game.Enums.MessageDuration.Indefinite);
+
             displayHealth.SetAnchorPoint(this);
             GetWorld().AddMessage(displayHealth);
         }
@@ -52,7 +59,10 @@ namespace MyGame.Actors
             if (health < 0)
                 health = 0;
 
-            displayHealth.SetText($"{health} / {maxHealth} HP");
+            if ((this as IWizard) == null)
+                displayHealth.SetText($"{health} / {maxHealth} HP");
+            else
+                displayHealth.SetText($"{health} / {maxHealth} HP\n{(this as IWizard).GetMana()} MP");
         }
 
         public void SetJump(Jump jump)
@@ -87,6 +97,8 @@ namespace MyGame.Actors
         }
 
         public double GetSpeed() => speedStrategy.GetSpeed(speed);
+
+        public ActorOrientation GetDirection() => direction;
 
         public void ChangeDirection(ActorOrientation newDirection)
         {

@@ -37,7 +37,7 @@ namespace MyGame.Actors
                 mechanism.Deactivate();
                 Release();
             }
-            
+
             GetAnimation().Start();
         }
 
@@ -62,7 +62,7 @@ namespace MyGame.Actors
             
             GetWorld().GetActors().ForEach(actor => {
                 if (intersector == null && 
-                    ((actor as ICharacter) != null || actor.GetName().Contains("Box")) &&
+                    (actor as ICharacter) != null &&
                     IntersectsWithActor(actor))
                 {
                     intersector = actor;
