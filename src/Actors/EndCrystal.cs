@@ -1,6 +1,7 @@
 using Merlin2d.Game;
 using Merlin2d.Game.Enums;
 using Merlin2d.Game.Actors;
+using MyGame.Actors.Items;
 
 
 namespace MyGame.Actors
@@ -20,7 +21,8 @@ namespace MyGame.Actors
 
         public void Use(IActor actor)
         {   
-            GetWorld().SetEndCondition(w => MapStatus.Finished);
+            if (actor is Player && (actor as Player).GetInventory().GetItem() is EndKey)
+                GetWorld().SetEndCondition(w => MapStatus.Finished);
         }
 
         public override void Update() {}

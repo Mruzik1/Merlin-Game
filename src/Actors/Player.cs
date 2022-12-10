@@ -20,11 +20,7 @@ namespace MyGame.Actors
             spellCaster = new SpellDirector(this);
             inventory = new Backpack(4);
 
-            // temporary
-            inventory.AddItem(new HealingPotion(50));
-            inventory.AddItem(new ManaPotion(50));
-            inventory.AddItem(new HealingPotion(50));
-            inventory.AddItem(new ManaPotion(50));
+            inventory.AddItem(new EndKey());
 
             SetJump(new Jump(150, this));
             SetPosition(x, y);
