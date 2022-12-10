@@ -19,5 +19,5 @@ Interactive objects:
 ## Inventory
   - Shift to The Right: **D**
   - Shift to The Left: **A**
-  - Use Item: **C**
-  - Throw Out / Pick Up: **X**
+  - Use Item From Inventory: **C**
+  - Drop / Pick Up: **X**

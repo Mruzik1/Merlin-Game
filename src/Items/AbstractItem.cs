@@ -6,7 +6,7 @@ namespace MyGame.Actors.Items
 {
     public abstract class AbstractItem : AbstractActor, IUsable, IItem
     {
-        public void ThrowOut(IActor player)
+        public void Drop(IActor player)
         {
             Renew();
             SetPosition(player.GetX(), player.GetY());

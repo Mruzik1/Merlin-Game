@@ -20,14 +20,11 @@ namespace MyGame.Actors
             spellCaster = new SpellDirector(this);
             inventory = new Backpack(10);
 
+            // temporary
             inventory.AddItem(new HealingPotion(50));
             inventory.AddItem(new ManaPotion(50));
             inventory.AddItem(new HealingPotion(50));
             inventory.AddItem(new HealingPotion(50));
-            inventory.AddItem(new ManaPotion(50));
-            inventory.AddItem(new HealingPotion(50));
-            inventory.AddItem(new HealingPotion(50));
-            inventory.AddItem(new ManaPotion(50));
             inventory.AddItem(new ManaPotion(50));
 
             SetJump(new Jump(150, this));
@@ -61,13 +58,13 @@ namespace MyGame.Actors
             return false;
         }
 
-        private void ThrowOut()
+        private void Drop()
         {
             AbstractItem item = (inventory.GetItem() as AbstractItem);
             if (item == null)
                 return;
 
-            item.ThrowOut(this);
+            item.Drop(this);
             inventory.RemoveItem(item);
         }
 
@@ -78,6 +75,7 @@ namespace MyGame.Actors
                 {   
                     if (actor is IUsable)
                         (actor as IUsable).Use(this);
+                        
                     else if (actor is AbstractItem)
                         (actor as AbstractItem).Use(this);
                 }
@@ -127,10 +125,10 @@ namespace MyGame.Actors
             else if (Input.GetInstance().IsKeyPressed((Input.Key)ActorControls.UseFromInventory))
                 UseFromInventory();
 
-            // throw an item out / pick it up
+            // drop an item / pick it up
             else if (Input.GetInstance().IsKeyPressed((Input.Key)ActorControls.InventoryThrowPickup))
                 if (!PickUp())
-                    ThrowOut();
+                    Drop();
         }
 
         public override void Walking()
