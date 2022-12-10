@@ -58,8 +58,8 @@ namespace MyGame.Spells
             }
 
             GetWorld().GetActors().ForEach(actor => {
-                if (actor.GetName() != "Merlin" && (actor as ICharacter) != null
-                    && IntersectsWithActor(actor))
+                if (actor.GetName() != "Merlin" && actor is ICharacter &&
+                    IntersectsWithActor(actor))
                 {
                     ApplyEffects((ICharacter)actor);
                     RemoveFromWorld();

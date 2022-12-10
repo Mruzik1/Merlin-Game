@@ -62,7 +62,7 @@ namespace MyGame.Actors
             
             GetWorld().GetActors().ForEach(actor => {
                 if (intersector == null && 
-                    (actor as ICharacter) != null &&
+                    actor is ICharacter &&
                     IntersectsWithActor(actor))
                 {
                     intersector = actor;

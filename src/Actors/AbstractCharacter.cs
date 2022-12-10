@@ -58,7 +58,7 @@ namespace MyGame.Actors
 
         public void InitHealthMsg()
         {
-            if ((this as IWizard) == null)
+            if (!(this is IWizard))
                 displayHealth = new Message($"{health} / {maxHealth} HP",
                 -20, -20, 15, Color.Black, Merlin2d.Game.Enums.MessageDuration.Indefinite);
             else
@@ -85,7 +85,7 @@ namespace MyGame.Actors
             else if (health+delta > maxHealth)
                 health = maxHealth;
 
-            if ((this as IWizard) == null)
+            if (!(this is IWizard))
                 displayHealth.SetText($"{health} / {maxHealth} HP");
             else
                 displayHealth.SetText($"{health} / {maxHealth} HP\n{(this as IWizard).GetMana()} MP");

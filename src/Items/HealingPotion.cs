@@ -17,8 +17,8 @@ namespace MyGame.Actors.Items
             used = false;
             this.dose = dose;
 
-            fullAnimation = new Animation("resources/sprites/source_on.png", 16, 16);
-            emptyAnimation = new Animation("resources/sprites/source_off.png", 16, 16);
+            fullAnimation = new Animation("resources/sprites/healing_potion_full.png", 16, 16);
+            emptyAnimation = new Animation("resources/sprites/healing_potion_empty.png", 16, 16);
 
             SetPosition(x, y);
             SetAnimation(fullAnimation);

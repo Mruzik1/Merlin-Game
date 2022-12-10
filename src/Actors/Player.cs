@@ -82,7 +82,7 @@ namespace MyGame.Actors
             if (spell == null)
                 return;
 
-            if ((spell as ProjectileSpell) == null)
+            if (spell is SelfCastSpell)
                 spell.ApplyEffects(this);
             
             displayHealth.SetText($"{health} / {maxHealth} HP\n{(this as IWizard).GetMana()} MP");
