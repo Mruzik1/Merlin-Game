@@ -35,9 +35,9 @@ namespace MyGame.Factories
                 (actor as AbstractCharacter).SetInvincibility(100);
             }
 
-            else if (actorType == "DoorObj")
+            else if (actorType.Contains("DoorObj"))
             {
-                actor = new Door(x, y);
+                actor = new Door(x, y, actorType);
             }
 
             else if (actorType == "PressurePlateObj")

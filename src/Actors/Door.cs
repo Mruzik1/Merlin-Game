@@ -9,10 +9,19 @@ namespace MyGame.Actors
         private Animation animationClosed;
         private bool isOpen;
 
-        public Door(int x, int y)
+        public Door(int x, int y, string doorType)
         {
-            animationOpen = new Animation("resources/sprites/door_open.png", 30, 70);
-            animationClosed = new Animation("resources/sprites/door_closed.png", 10, 70);
+            if (!doorType.Contains("Trap"))
+            {
+                animationOpen = new Animation("resources/sprites/door_open.png", 30, 70);
+                animationClosed = new Animation("resources/sprites/door_closed.png", 10, 70);
+            }
+            else
+            {
+                animationOpen = new Animation("resources/sprites/trapdoor_open.png", 50, 20);
+                animationClosed = new Animation("resources/sprites/trapdoor_closed.png", 50, 10);
+            }
+
             isOpen = false;
             
             SetPosition(x, y);
