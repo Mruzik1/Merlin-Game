@@ -18,12 +18,11 @@ namespace MyGame.Actors
         {    
             Animation animation = new Animation("resources/sprites/player.png", 28, 47);
             spellCaster = new SpellDirector(this);
-            inventory = new Backpack(10);
+            inventory = new Backpack(4);
 
             // temporary
             inventory.AddItem(new HealingPotion(50));
             inventory.AddItem(new ManaPotion(50));
-            inventory.AddItem(new HealingPotion(50));
             inventory.AddItem(new HealingPotion(50));
             inventory.AddItem(new ManaPotion(50));
 

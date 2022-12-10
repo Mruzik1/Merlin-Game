@@ -92,8 +92,10 @@ namespace MyGame.Actors.Items
             items[idx] = null;
             
             // shift all items
-            for (int i = idx+1; i <= itemsCount; ++i)
-                items[i-1] = items[i];
+            for (int i = idx; i < itemsCount; ++i)
+            {
+                items[i] = (i+1 != itemsCount) ? items[i+1] : null;
+            }
 
             itemsCount--;
         }

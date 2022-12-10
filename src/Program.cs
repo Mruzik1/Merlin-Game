@@ -46,7 +46,7 @@ namespace MyGame
                     {
                         int mechanismNumber = name.Length-2;
                         IMechanism mechanism = (IMechanism)w.GetActors().Find(x => x.GetName().Contains($"Mechanism{name[mechanismNumber]}"));
-                        (actor as IUsable).SetMechanism(mechanism);
+                        (actor as IController).SetMechanism(mechanism);
                     }
                 });
 

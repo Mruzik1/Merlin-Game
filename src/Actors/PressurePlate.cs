@@ -4,7 +4,7 @@ using Merlin2d.Game.Actors;
 
 namespace MyGame.Actors
 {
-    public class PressurePlate : AbstractActor, IUsable
+    public class PressurePlate : AbstractActor, IController
     {
         private IMechanism mechanism;
         private IActor intersector;

@@ -6,6 +6,5 @@ namespace MyGame.Actors
     public interface IUsable
     {
         void Use(IActor actor);
-        void SetMechanism(IMechanism mechanism);
     }
 }

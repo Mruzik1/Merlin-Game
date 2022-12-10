@@ -4,7 +4,7 @@ using Merlin2d.Game.Actors;
 
 namespace MyGame.Actors
 {
-    public class Lever : AbstractActor, IUsable
+    public class Lever : AbstractActor, IController
     {
         private IMechanism mechanism;
         private Animation animationActive;
