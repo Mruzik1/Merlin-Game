@@ -31,17 +31,19 @@ namespace MyGame.Spells
                     animationWidth = int.Parse(values[3]);
                     animationHeight = int.Parse(values[4]);
                 }
-                catch (FormatException)
+                catch (FormatException e)
                 {
                     animationWidth = 0;
                     animationHeight = 0;
+
+                    Console.Error.WriteLine($"Warning: {e}");
                 }
 
                 effectNames = values[5].Split(',');
             }
             catch (ArgumentException e)
             {
-                Console.Error.WriteLine($"Wrong spell values: {e}");
+                Console.Error.WriteLine($"Warning: {e}");
             }
             catch (Exception e)
             {

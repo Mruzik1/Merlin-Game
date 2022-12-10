@@ -23,6 +23,7 @@ namespace MyGame
                 // init player
                 Player player = (Player)w.GetActors().Find(x => x.GetName() == "Merlin");
                 player.InitHealthMsg();
+                w.ShowInventory(player.GetInventory());
 
                 // init actors with specific names
                 w.GetActors().ForEach(actor => {

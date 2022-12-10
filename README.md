@@ -8,10 +8,16 @@ Press on the number keys to use spells:
   - **4** *- Instant Heal*
   - **5** *- Speed Boost*
 ## Move
-Press **A** or **D** to walk. Use **W** to jump.
+Press **<-** or **->** to walk. Use **UP** to jump.
 ## Interaction with objects
-For an interaction just hold/press **E**.
+For an interaction just hold/press **Z**.
 <br />
 Interactive objects:
-  - *Switches - obviously, you can switch those by pressing the key*
-  - *Boxes - you can pull a box by simply holding **E** while intersecting with it*
+  - *Switches - obviously, you can switch those by pressing the key.*
+  - *Boxes - you can pull a box by simply holding **Z** while intersecting with it.*
+  - *Items - to use an item lying on the ground.*
+## Inventory
+  - Shift to The Right: **D**
+  - Shift to The Left: **A**
+  - Use Item: **C**
+  - Throw Out / Pick Up: **X**

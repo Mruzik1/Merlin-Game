@@ -13,7 +13,7 @@ namespace MyGame.Actors
 
         public PressurePlate(int x, int y)
         {
-            animationPressed = new Animation("resources/sprites/pressed_plate.png", 40, 4);
+            animationPressed = new Animation("resources/sprites/pressed_plate.png", 40, 8);
             animationDefault = new Animation("resources/sprites/released_plate.png", 40, 8);
             
             SetAnimation(animationDefault);

@@ -57,7 +57,7 @@ namespace MyGame.Actors
             if (player == null)
                 return;
 
-            if (IntersectsWithActor(player) && Input.GetInstance().IsKeyPressed(Input.Key.E))
+            if (IntersectsWithActor(player) && Input.GetInstance().IsKeyPressed((Input.Key)ActorControls.Interact))
                 Use(player);
         }
     }

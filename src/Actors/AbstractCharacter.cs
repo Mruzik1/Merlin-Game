@@ -59,14 +59,13 @@ namespace MyGame.Actors
         public void InitHealthMsg()
         {
             if (!(this is IWizard))
-                displayHealth = new Message($"{health} / {maxHealth} HP",
-                -20, -20, 15, Color.Black, Merlin2d.Game.Enums.MessageDuration.Indefinite);
+                displayHealth = new Message("", -20, -20, 15, Color.Black, Merlin2d.Game.Enums.MessageDuration.Indefinite);
             else
-                displayHealth = new Message($"{health} / {maxHealth} HP\n{(this as IWizard).GetMana()} MP",
-                -20, -40, 15, Color.Black, Merlin2d.Game.Enums.MessageDuration.Indefinite);
-
+                displayHealth = new Message("", -20, -40, 15, Color.Black, Merlin2d.Game.Enums.MessageDuration.Indefinite);
+            
             displayHealth.SetAnchorPoint(this);
             GetWorld().AddMessage(displayHealth);
+            UpdateStats();
         }
 
         public void ChangeHealth(int delta)
@@ -85,6 +84,11 @@ namespace MyGame.Actors
             else if (health+delta > maxHealth)
                 health = maxHealth;
 
+            UpdateStats();
+        }
+
+        public void UpdateStats()
+        {
             if (!(this is IWizard))
                 displayHealth.SetText($"{health} / {maxHealth} HP");
             else

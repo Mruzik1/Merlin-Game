@@ -30,7 +30,7 @@ namespace MyGame.Actors
         {
             bool isEdge = GetX()+GetWidth()-player.GetSpeed() <= player.GetX();
             bool hasRightDirection = player.GetDirection() == ActorOrientation.FacingLeft;
-            bool pullingButtonPressed = Input.GetInstance().IsKeyDown(Input.Key.E);
+            bool pullingButtonPressed = Input.GetInstance().IsKeyDown((Input.Key)ActorControls.Interact);
 
             return hasRightDirection && (isEdge || pullingButtonPressed);
         }
@@ -39,7 +39,7 @@ namespace MyGame.Actors
         {
             bool isEdge = player.GetX()+player.GetWidth() <= GetX()+player.GetSpeed();
             bool hasRightDirection = player.GetDirection() == ActorOrientation.FacingRight;
-            bool pullingButtonPressed = Input.GetInstance().IsKeyDown(Input.Key.E);
+            bool pullingButtonPressed = Input.GetInstance().IsKeyDown((Input.Key)ActorControls.Interact);
 
             return hasRightDirection && (isEdge || pullingButtonPressed);
         }
@@ -52,11 +52,11 @@ namespace MyGame.Actors
             speed = player.GetSpeed();
 
             // move by the player
-            if (Input.GetInstance().IsKeyDown(Input.Key.A) && IsPushableToLeft())
+            if (Input.GetInstance().IsKeyDown((Input.Key)ActorControls.MoveLeft) && IsPushableToLeft())
             {
                 moveLeft.Execute();
             }
-            else if (Input.GetInstance().IsKeyDown(Input.Key.D) && IsPushableToRight())
+            else if (Input.GetInstance().IsKeyDown((Input.Key)ActorControls.MoveRight) && IsPushableToRight())
             {
                 moveRight.Execute();
             }

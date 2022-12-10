@@ -7,16 +7,15 @@ namespace MyGame.Actors.Items
     public class Backpack : AbstractActor, IInventory
     {
         private List<IItem> items;
+        private int itemsCount;
 
         public Backpack(int capacity)
         {
-            items = new List<IItem>(capacity);
+            items = Enumerable.Repeat<IItem>(null, capacity).ToList();
+            itemsCount = 0;
         }
 
-        public override void Update()
-        {
-            
-        }
+        public override void Update() {}
 
         public IItem GetItem()
         {
@@ -25,21 +24,22 @@ namespace MyGame.Actors.Items
 
         public void AddItem(IItem item)
         {
-            for (int i = 0; i < items.Count; ++i)
+            for (int i = 0; i < items.Capacity; ++i)
             {
                 if (items[i] == null)
                 {
                     items[i] = item;
+                    itemsCount++;
                     return;
                 }
             }
 
-            throw new FullInventoryException("The backpack is full!");
+            Console.Error.WriteLine($"Warning: {new FullInventoryException("The backpack is full!")}");
         }
 
         public int GetCapacity()
         {
-            return items.Count;
+            return items.Capacity;
         }
 
         public IEnumerator<IItem> GetEnumerator()
@@ -55,22 +55,47 @@ namespace MyGame.Actors.Items
 
         public void ShiftLeft()
         {
+            List<IItem> tmpItems = new List<IItem>(items);
 
+            for (int i = 0; i < itemsCount; ++i)
+            {
+                int newIdx = (i <= 0) ? itemsCount-1 : i-1;
+                tmpItems[newIdx] = items[i];
+            }
+
+            items = tmpItems;
         }
 
         public void ShiftRight()
         {
-            
+            List<IItem> tmpItems = new List<IItem>(items);
+
+            for (int i = 0; i < itemsCount; ++i)
+            {
+                int newIdx = (i >= itemsCount-1) ? 0 : i+1;
+                tmpItems[newIdx] = items[i];
+            }
+
+            items = tmpItems;
         }
 
         public void RemoveItem(IItem item)
         {
-            items.Remove(item);
+            RemoveItem(items.IndexOf(item));
         }
 
         public void RemoveItem(int idx)
         {
-            items.RemoveAt(idx);
+            if (idx >= items.Capacity || items[idx] == null)
+                return;
+
+            items[idx] = null;
+            
+            // shift all items
+            for (int i = idx+1; i <= itemsCount; ++i)
+                items[i-1] = items[i];
+
+            itemsCount--;
         }
 
         IEnumerator IEnumerable.GetEnumerator()
