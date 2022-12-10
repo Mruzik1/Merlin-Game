@@ -97,13 +97,9 @@ namespace MyGame.Actors
             // cast healing over time
             else if (Input.GetInstance().IsKeyPressed(Input.Key.THREE))
                 Cast(spellCaster.Build("healing"));
-
-            // cast instant heal
-            else if (Input.GetInstance().IsKeyPressed(Input.Key.FOUR))
-                Cast(spellCaster.Build("instant heal"));
                         
             // cast speed boost
-            else if (Input.GetInstance().IsKeyPressed(Input.Key.FIVE))
+            else if (Input.GetInstance().IsKeyPressed(Input.Key.FOUR))
                 Cast(spellCaster.Build("speed boost"));
 
             // interact with the environment

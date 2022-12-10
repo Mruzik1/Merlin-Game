@@ -50,6 +50,10 @@ namespace MyGame
                     }
                 });
 
+                // set final messages
+                container.SetEndGameMessage(new Message("You won!", 100, 100, 20, Color.Blue, MessageDuration.Short), MapStatus.Finished);
+                container.SetEndGameMessage(new Message("Game over", 100, 100, 20, Color.Blue, MessageDuration.Short), MapStatus.Failed);
+                
                 // set the camera up
                 w.CenterOn(player);
             });

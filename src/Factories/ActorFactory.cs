@@ -13,7 +13,7 @@ namespace MyGame.Factories
 
             if (actorType == "Player")
             {
-                actor = new Player(x, y, 2, 100, 200);
+                actor = new Player(x, y, 2, 100, 2000);
                 string[] enemies = {"John"};
 
                 actor.SetPhysics(true);
@@ -44,9 +44,15 @@ namespace MyGame.Factories
             {
                 actor = new PressurePlate(x, y);
             }
+
             else if (actorType == "SwitchObj")
             {
                 actor = new Lever(x, y);
+            }
+
+            else if (actorType == "EndCrystalObj")
+            {
+                actor = new EndCrystal(x, y);
             }
 
             if (actor != null)

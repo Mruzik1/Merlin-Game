@@ -5,8 +5,7 @@ Press on the number keys to use spells:
   - **1** *- Fireball*
   - **2** *- Iceball*
   - **3** *- Heal Over Time*
-  - **4** *- Instant Heal*
-  - **5** *- Speed Boost*
+  - **4** *- Speed Boost*
 ## Move
 Press **<-** or **->** to walk. Use **UP** to jump.
 ## Interaction with objects

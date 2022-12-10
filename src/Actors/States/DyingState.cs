@@ -1,4 +1,5 @@
 using Merlin2d.Game.Actors;
+using Merlin2d.Game.Enums;
 
 
 namespace MyGame.Actors
@@ -15,6 +16,9 @@ namespace MyGame.Actors
         public void Update()
         {
             (character as IActor).RemoveFromWorld();
+
+            if (character is Player)
+                (character as Player).GetWorld().SetEndCondition(w => MapStatus.Failed);
         }
     }
 }

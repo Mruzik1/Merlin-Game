@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="150" height="50" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="14">
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="150" height="50" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="15">
  <tileset firstgid="1" name="tileset_basic" tilewidth="16" tileheight="16" tilecount="960" columns="32">
   <image source="tilesets/tileset_basic.png" width="512" height="480"/>
  </tileset>
@@ -23,5 +23,6 @@
   <object id="2" name="John1" type="Enemy" x="2347.51" y="694.243" width="41.7742" height="63.8899"/>
   <object id="4" name="John2" type="Enemy" x="1380.51" y="314.243" width="41.7742" height="63.8899"/>
   <object id="7" name="John3" type="Enemy" x="1804.51" y="684.243" width="41.7742" height="63.8899"/>
+  <object id="14" name="EndCrystal" type="EndCrystalObj" x="261.333" y="679.333" width="56" height="56"/>
  </objectgroup>
 </map>

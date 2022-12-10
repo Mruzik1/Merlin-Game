@@ -1,6 +1,5 @@
 name;spelltype;animationpath;animationwidth;animationheight;effects
 iceball;projectile;resources/sprites/iceball.png;20;10;directdamage-20,speeddecrease-10000
-fireball;projectile;resources/sprites/fireball.png;20;10;damageovertime-4-10-300,speedincrease-2000
+fireball;projectile;resources/sprites/fireball.png;20;10;damageovertime-5-10-300,speedincrease-2000
 healing;selfcast;;;;healovertime-3-10-500
-instant heal;selfcast;;;;instantheal-10
 speed boost;selfcast;;;;speedincrease-15000
