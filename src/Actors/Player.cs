@@ -42,7 +42,7 @@ namespace MyGame.Actors
         
         public override void Update()
         {  
-            base.Update();
+            base.Update(); 
 
             // do magic
             // cast fireball
@@ -65,6 +65,16 @@ namespace MyGame.Actors
             else if (Input.GetInstance().IsKeyPressed(Input.Key.FIVE))
                 Cast(spellCaster.Build("speed boost"));
 
+            // interact with the environment
+            // use objects (potions on the ground, swithes, etc)
+            if (Input.GetInstance().IsKeyPressed((Input.Key)ActorControls.Interact))
+            {
+                GetWorld().GetActors().ForEach(actor => {
+                    if (IntersectsWithActor(actor) && actor is IUsable)
+                        (actor as IUsable).Use(this);
+                });
+            }
+
             // shift inventory
             // to the left
             if (Input.GetInstance().IsKeyPressed((Input.Key)ActorControls.ShiftInventoryLeft))
@@ -81,6 +91,12 @@ namespace MyGame.Actors
 
                 if (item != null)
                     item.Use(this);
+            }
+
+            // throw an item out / pick it up
+            else if (Input.GetInstance().IsKeyPressed((Input.Key)ActorControls.InventoryThrowPickup))
+            {
+
             }
         }
 

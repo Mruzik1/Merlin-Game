@@ -51,14 +51,6 @@ namespace MyGame.Actors
             SetAnimation(animationInactive);
         }
 
-        public override void Update()
-        {
-            IActor player = GetWorld().GetActors().Find(x => x.GetName() == "Merlin");
-            if (player == null)
-                return;
-
-            if (IntersectsWithActor(player) && Input.GetInstance().IsKeyPressed((Input.Key)ActorControls.Interact))
-                Use(player);
-        }
+        public override void Update() {}
     }
 }
