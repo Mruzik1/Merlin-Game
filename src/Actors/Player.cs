@@ -1,5 +1,6 @@
 using Merlin2d.Game;
 using Merlin2d.Game.Items;
+using Merlin2d.Game.Actors;
 using MyGame.Commands;
 using MyGame.Actors.Items;
 using MyGame.Spells;
@@ -39,6 +40,49 @@ namespace MyGame.Actors
         }
 
         public IInventory GetInventory() => inventory;
+
+        private void UseFromInventory()
+        {
+            AbstractItem item = (inventory.GetItem() as AbstractItem);
+
+            if (item != null)
+                item.Use(this);
+        }
+
+        private bool PickUp()
+        {
+            foreach (IActor actor in GetWorld().GetActors())
+                if (IntersectsWithActor(actor) && actor is IItem)
+                {
+                    inventory.AddItem((actor as IItem));
+                    actor.RemoveFromWorld();
+                    return true;
+                }
+            return false;
+        }
+
+        private void ThrowOut()
+        {
+            AbstractItem item = (inventory.GetItem() as AbstractItem);
+            if (item == null)
+                return;
+
+            item.ThrowOut(this);
+            inventory.RemoveItem(item);
+        }
+
+        private void InteractWithObject()
+        {
+            GetWorld().GetActors().ForEach(actor => {
+                if (IntersectsWithActor(actor))
+                {   
+                    if (actor is IUsable)
+                        (actor as IUsable).Use(this);
+                    else if (actor is AbstractItem)
+                        (actor as AbstractItem).Use(this);
+                }
+            });
+        }
         
         public override void Update()
         {  
@@ -68,12 +112,7 @@ namespace MyGame.Actors
             // interact with the environment
             // use objects (potions on the ground, swithes, etc)
             if (Input.GetInstance().IsKeyPressed((Input.Key)ActorControls.Interact))
-            {
-                GetWorld().GetActors().ForEach(actor => {
-                    if (IntersectsWithActor(actor) && actor is IUsable)
-                        (actor as IUsable).Use(this);
-                });
-            }
+                InteractWithObject();
 
             // shift inventory
             // to the left
@@ -86,18 +125,12 @@ namespace MyGame.Actors
             
             // use an item from the inventory
             else if (Input.GetInstance().IsKeyPressed((Input.Key)ActorControls.UseFromInventory))
-            {
-                AbstractItem item = (inventory.GetItem() as AbstractItem);
-
-                if (item != null)
-                    item.Use(this);
-            }
+                UseFromInventory();
 
             // throw an item out / pick it up
             else if (Input.GetInstance().IsKeyPressed((Input.Key)ActorControls.InventoryThrowPickup))
-            {
-
-            }
+                if (!PickUp())
+                    ThrowOut();
         }
 
         public override void Walking()
@@ -138,7 +171,7 @@ namespace MyGame.Actors
             if (spell is SelfCastSpell)
                 spell.ApplyEffects(this);
             
-            displayHealth.SetText($"{health} / {maxHealth} HP\n{(this as IWizard).GetMana()} MP");
+            UpdateStats();
         }
     }
 }

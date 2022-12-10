@@ -81,7 +81,11 @@ namespace MyGame.Actors
         public void RemoveFromWorld()
         {
             toBeRemoved = true;
-            animation.UnloadTexture();
+        }
+
+        public void Renew()
+        {
+            toBeRemoved = false;
         }
 
         public bool RemovedFromWorld() => toBeRemoved;
