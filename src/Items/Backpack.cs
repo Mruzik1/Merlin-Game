@@ -99,9 +99,6 @@ namespace MyGame.Actors.Items
             itemsCount--;
         }
 
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
-        }
+        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
     }
 }
