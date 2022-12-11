@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="200" height="50" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="22">
+ <tileset firstgid="1" name="tileset_basic" tilewidth="16" tileheight="16" tilecount="960" columns="32">
+  <image source="tilesets/tileset_basic.png" width="512" height="480"/>
+ </tileset>
+ <layer id="1" name="background" width="200" height="50">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAECu3bUW6DMBAFQNoD5cA9XM9SWRXCWrURsR0Ls/OBAgo23mUeahL18bltD5seMMAAAwwwwAADDDDAAAMMMMAAAwwwwAADDDDAAAMMMMAAAwwwwAADDDDAAAMMMMAAAwwwwAADDDDAAAMMMMAAAwwwwAADDDCwjIHvj237qrZy7H+G9YCBXwMxD/FYn2Qls4GYh3icuTdq92yIeYjHjDCymoFiuP7M8Op+nYF6v/ShPu69zqvr+u/8ek2r3Svrnf986fVSj6/3/8rHFe5vXOMV1mQN892f7XmvlzJ+f1bHuZ69d3Z9o8+Laxw9v/mua73l3mTzkq3eFhPGHBnP5iVbvawf1lt6kc1LtnpbTBhzZKp42T8/XO31HfdJPo57/47+3m3ObF6y1Xs3r7Pr4cXzdLa5la4nH/KxktfZa5UP+ZhtbqXryYd8rOR19lpjPsrxrO+xZl5rrynWO7vfrud5dNbAM6vP3js7v/NYvKsB+WD7rrZH1CUf8jHC0V3nkA/5uKvtEXXJh3yMcNQ7R3G4f7fT+xpN98wd5+qt03h5azHAITctbrKMkQ/5yGL9bJ313z3yIR9n3WQ5TyZkIov1ljrlQz5a3GQZIx/ysZr1YtamBwz8baD3twfjx/2Oo5fX6+UP8DQmrUCcAAA=
+  </data>
+ </layer>
+ <layer id="2" name="walls" width="200" height="50" visible="0">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAECu2cUYqFMAxFhdnX2/+yhjLcR5irImptY05hSI2vSXqSi3/z+VmWD38wYAY2Z2BhQQACRkDfDXuBAwIQ+H5PQAEBCDgBvh/OBA8ERAB9iAQWAk4AfTgTPBAQAfQhElgIOAH04UzwQEAE0IdIYCHgBNCHM8EDARFAHyKBhYATQB/OBA8ERAB9iAQWAk4AfTgTPBAQAfQhElgIOAH04UzwQEAE0IdIYCHgBNCHM8EDARF4iz50j2h1RywEzhLQPJ09P8u5do+4/j/Hd+whcJQA+jhKit9VJIA+KnadOx8lMFIfyn3F6p4tRlzx+Ur8u8/GGtnPT0D9H1FpnOEz+eP5uG+x4nPcn8lz15lZ6rjrPhXitJ6N6tvVvKpdNvZLPtn4btS+1cLKRWDk/FSbl2r3zaWE9WrRxzqXHl700YNq35jooy/fGB19RBo59qP1ofyz2R7dQx89qPaNqbnsm2U9erV5qXbf9a7n8qKPXP2i2mcJoI9neZMtFwH0katfVPssAfTxLG+y5SIwkz5Uy5ttrumgWs1iNRLt3ltr793WGfzvJFBVH3vdRB97dGq9Qx/eb/ThTKp60Id3Hn04k6oe9OGdRx/OpKpnpD6U+y4be3g1ZozFvi4BzdEIAi03CwIzE0AfM3eH2kYTeFofyic7+v7kh8AegafntOVjQSALAfSRpVPUOYIA+hhBnZxZCEgf2L//cwQHODADzAAzcHwGfgE2/bazQJwAAA==
+  </data>
+ </layer>
+ <objectgroup id="3" name="objects">
+  <object id="10" name="PressurePlate3" type="PressurePlateObj" x="1186.46" y="552.512" width="40" height="8"/>
+  <object id="12" name="Switch11" type="SwitchObj" x="906.333" y="601.667" width="25" height="25"/>
+  <object id="15" name="DoorMechanism2" type="TrapDoorObj" x="800.67" y="654.667" width="50" height="20"/>
+  <object id="9" name="DoorMechanism12" type="DoorObj" x="976.289" y="588.846" width="30" height="70"/>
+  <object id="13" name="Box1" type="BoxObj" x="539.667" y="428" width="32" height="32"/>
+  <object id="1" name="Merlin" type="Player" x="66.8858" y="719.357" width="27" height="47"/>
+  <object id="2" name="John1" type="Enemy" x="1007.6" y="608.273" width="33" height="47"/>
+  <object id="14" name="EndCrystal" type="EndCrystalObj" x="3065.33" y="709.333" width="56" height="56"/>
+  <object id="16" name="Switch2" type="SwitchObj" x="817.5" y="510.167" width="25" height="25"/>
+  <object id="17" name="DoorMechanism11" type="TrapDoorObj" x="494" y="558" width="50" height="20"/>
+  <object id="18" name="ManaPotion1" type="ManaPotionObj" x="1060.33" y="639.333" width="16" height="16"/>
+  <object id="19" name="DoorMechanism3" type="DoorObj" x="1439.67" y="491" width="30" height="70"/>
+  <object id="20" name="EndKey" type="EndKeyObj" x="144.333" y="702.917" width="16" height="16"/>
+ </objectgroup>
+</map>
