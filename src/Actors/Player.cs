@@ -42,7 +42,8 @@ namespace MyGame.Actors
         private bool PickUp()
         {
             foreach (IActor actor in GetWorld().GetActors())
-                if (IntersectsWithActor(actor) && actor is IItem)
+                if (IntersectsWithActor(actor) && actor is IItem && 
+                    inventory.GetCapacity() > (inventory as Backpack).GetCount())
                 {
                     inventory.AddItem((actor as IItem));
                     actor.RemoveFromWorld();

@@ -37,10 +37,9 @@ namespace MyGame.Actors.Items
             Console.Error.WriteLine($"Warning: {new FullInventoryException("The backpack is full!")}");
         }
 
-        public int GetCapacity()
-        {
-            return items.Capacity;
-        }
+        public int GetCapacity() => items.Capacity;
+
+        public int GetCount() => itemsCount;
 
         public IEnumerator<IItem> GetEnumerator()
         {
