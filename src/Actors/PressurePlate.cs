@@ -6,7 +6,7 @@ namespace MyGame.Actors
 {
     public class PressurePlate : AbstractActor, IController
     {
-        private IMechanism mechanism;
+        private IEnumerable<IMechanism> mechanisms;
         private IActor intersector;
         private Animation animationPressed;
         private Animation animationDefault;
@@ -15,6 +15,7 @@ namespace MyGame.Actors
         {
             animationPressed = new Animation("resources/sprites/pressed_plate.png", 40, 8);
             animationDefault = new Animation("resources/sprites/released_plate.png", 40, 8);
+            mechanisms = new List<IMechanism>();
             
             SetAnimation(animationDefault);
             SetPosition(x, y);
@@ -26,34 +27,36 @@ namespace MyGame.Actors
             if (actor == null)
                 return;
 
-            if (IntersectsWithActor(actor))
+            foreach (IMechanism mechanism in mechanisms)
             {
-                mechanism.Activate();
-                Press();
-            }
-            else
-            {
-                intersector = null;
-                mechanism.Deactivate();
-                Release();
+                if (IntersectsWithActor(actor))
+                    Press(mechanism);
+
+                else
+                {
+                    intersector = null;
+                    Release(mechanism);
+                }
             }
 
             GetAnimation().Start();
         }
 
-        public void SetMechanism(IMechanism mechanism)
+        public void SetMechanisms(List<IMechanism> mechanisms)
         {
-            this.mechanism = mechanism;
+            this.mechanisms = this.mechanisms.Concat(mechanisms);
         }
 
-        public void Press()
+        public void Press(IMechanism mechanism)
         {
             SetAnimation(animationPressed);
+            mechanism.Activate();
         }
 
-        public void Release()
+        public void Release(IMechanism mechanism)
         {
             SetAnimation(animationDefault);
+            mechanism.Deactivate();
         }
 
         public override void Update()

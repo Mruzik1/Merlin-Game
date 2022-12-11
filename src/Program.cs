@@ -2,6 +2,7 @@
 using MyGame.Commands;
 using MyGame.Factories;
 using Merlin2d.Game;
+using Merlin2d.Game.Actors;
 using Merlin2d.Game.Enums;
 
 
@@ -13,7 +14,7 @@ namespace MyGame
         {
             GameContainer container = new GameContainer("Game window", 800, 500);
 
-            container.SetMap("resources/maps/map01.tmx");
+            container.SetMap("resources/maps/map02.tmx");
             container.GetWorld().SetPhysics(new Gravity());
             container.GetWorld().SetFactory(new ActorFactory());
 
@@ -35,18 +36,18 @@ namespace MyGame
                         (actor as Skeleton).SetPlayer(player);
                     }
                     else if (name.Contains("Box"))
-                    {
                         (actor as Box).SetPlayer(player);
-                    }
+
                     else if (name.Contains("Door"))
-                    {
                         (actor as AbstractActor).MakeSolid(true);
-                    }
+
                     else if (name.Contains("PressurePlate") || name.Contains("Switch"))
                     {
-                        int mechanismNumber = name.Length-2;
-                        IMechanism mechanism = (IMechanism)w.GetActors().Find(x => x.GetName().Contains($"Mechanism{name[mechanismNumber]}"));
-                        (actor as IController).SetMechanism(mechanism);
+                        int mechanismNumber = name.Length-1;
+                        List<IActor> mechaActors = w.GetActors().FindAll(x => x.GetName().Contains($"Mechanism{name[mechanismNumber]}"));
+                        List<IMechanism> mechanisms = mechaActors.ConvertAll(x => (x as IMechanism));
+                        
+                        (actor as IController).SetMechanisms(mechanisms);
                     }
                 });
 

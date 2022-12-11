@@ -20,8 +20,6 @@ namespace MyGame.Actors
             spellCaster = new SpellDirector(this);
             inventory = new Backpack(4);
 
-            inventory.AddItem(new EndKey());
-
             SetJump(new Jump(150, this));
             SetPosition(x, y);
 

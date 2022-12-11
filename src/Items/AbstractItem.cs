@@ -6,11 +6,15 @@ namespace MyGame.Actors.Items
 {
     public abstract class AbstractItem : AbstractActor, IUsable, IItem
     {
+        public AbstractItem()
+        {
+            SetPhysics(true);
+        }
+
         public void Drop(IActor player)
         {
             Renew();
             SetPosition(player.GetX(), player.GetY());
-            SetPhysics(true);
             player.GetWorld().AddActor(this);
         }
 

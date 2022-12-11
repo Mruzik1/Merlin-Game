@@ -1,5 +1,6 @@
 using Merlin2d.Game;
 using Merlin2d.Game.Actors;
+using MyGame.Actors.Items;
 using MyGame.Actors;
 
 
@@ -23,7 +24,7 @@ namespace MyGame.Factories
 
             else if (actorType == "Enemy")
             {
-                actor = new Skeleton(x, y, 1.5, 200, 300);
+                actor = new Skeleton(x, y, 1.5, 150, 250);
                 actor.SetPhysics(true);
             }
 
@@ -36,24 +37,25 @@ namespace MyGame.Factories
             }
 
             else if (actorType.Contains("DoorObj"))
-            {
                 actor = new Door(x, y, actorType);
-            }
 
             else if (actorType == "PressurePlateObj")
-            {
                 actor = new PressurePlate(x, y);
-            }
 
             else if (actorType == "SwitchObj")
-            {
                 actor = new Lever(x, y);
-            }
 
             else if (actorType == "EndCrystalObj")
-            {
                 actor = new EndCrystal(x, y);
-            }
+
+            else if (actorType == "HealingPotionObj")
+                actor = new HealingPotion(x, y, 30);
+
+            else if (actorType == "ManaPotionObj")
+                actor = new ManaPotion(x, y, 75);
+            
+            else if (actorType == "EndKeyObj")
+                actor = new EndKey(x, y);
 
             if (actor != null)
                 actor.SetName(name);

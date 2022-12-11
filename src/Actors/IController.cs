@@ -2,6 +2,6 @@ namespace MyGame.Actors
 {
     public interface IController : IUsable
     {
-        void SetMechanism(IMechanism mechanism);
+        void SetMechanisms(List<IMechanism> mechanisms);
     }
 }

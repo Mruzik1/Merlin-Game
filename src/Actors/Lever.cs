@@ -6,7 +6,7 @@ namespace MyGame.Actors
 {
     public class Lever : AbstractActor, IController
     {
-        private IMechanism mechanism;
+        private IEnumerable<IMechanism> mechanisms;
         private Animation animationActive;
         private Animation animationInactive;
 
@@ -14,6 +14,7 @@ namespace MyGame.Actors
         {
             animationActive = new Animation("resources/sprites/switch_on.png", 25, 25);
             animationInactive = new Animation("resources/sprites/switch_off.png", 25, 25);
+            mechanisms = new List<IMechanism>();
             
             SetAnimation(animationInactive);
             SetPosition(x, y);
@@ -22,33 +23,32 @@ namespace MyGame.Actors
 
         public void Use(IActor actor)
         {   
-            if (!mechanism.IsActivated())
+            foreach (IMechanism mechanism in mechanisms)
             {
-                mechanism.Activate();
-                SwitchOn();
-            }
-            else
-            {
-                mechanism.Deactivate();
-                SwitchOff();
+                if (!mechanism.IsActivated())
+                    SwitchOn(mechanism);
+                else
+                    SwitchOff(mechanism);
             }
 
             GetAnimation().Start();
         }
 
-        public void SetMechanism(IMechanism mechanism)
+        public void SetMechanisms(List<IMechanism> mechanisms)
         {
-            this.mechanism = mechanism;
+            this.mechanisms = this.mechanisms.Concat(mechanisms);
         }
 
-        public void SwitchOn()
+        public void SwitchOn(IMechanism mechanism)
         {
             SetAnimation(animationActive);
+            mechanism.Activate();
         }
 
-        public void SwitchOff()
+        public void SwitchOff(IMechanism mechanism)
         {
             SetAnimation(animationInactive);
+            mechanism.Deactivate();
         }
 
         public override void Update() {}
