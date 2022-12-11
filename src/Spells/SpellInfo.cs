@@ -31,12 +31,12 @@ namespace MyGame.Spells
                     animationWidth = int.Parse(values[3]);
                     animationHeight = int.Parse(values[4]);
                 }
-                catch (FormatException e)
+                catch (FormatException)
                 {
                     animationWidth = 0;
                     animationHeight = 0;
 
-                    Console.Error.WriteLine($"Warning: {e}");
+                    Console.Error.WriteLine($"Warning: Can't read animation size");
                 }
 
                 effectNames = values[5].Split(',');
