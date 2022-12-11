@@ -1,31 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="200" height="50" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="22">
+<map version="1.9" tiledversion="1.9.2" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="200" height="50" tilewidth="16" tileheight="16" infinite="0" nextlayerid="6" nextobjectid="52">
  <tileset firstgid="1" name="tileset_basic" tilewidth="16" tileheight="16" tilecount="960" columns="32">
   <image source="tilesets/tileset_basic.png" width="512" height="480"/>
  </tileset>
  <layer id="1" name="background" width="200" height="50">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAECu3bUW6DMBAFQNoD5cA9XM9SWRXCWrURsR0Ls/OBAgo23mUeahL18bltD5seMMAAAwwwwAADDDDAAAMMMMAAAwwwwAADDDDAAAMMMMAAAwwwwAADDDDAAAMMMMAAAwwwwAADDDDAAAMMMMAAAwwwwAADDDCwjIHvj237qrZy7H+G9YCBXwMxD/FYn2Qls4GYh3icuTdq92yIeYjHjDCymoFiuP7M8Op+nYF6v/ShPu69zqvr+u/8ek2r3Svrnf986fVSj6/3/8rHFe5vXOMV1mQN892f7XmvlzJ+f1bHuZ69d3Z9o8+Laxw9v/mua73l3mTzkq3eFhPGHBnP5iVbvawf1lt6kc1LtnpbTBhzZKp42T8/XO31HfdJPo57/47+3m3ObF6y1Xs3r7Pr4cXzdLa5la4nH/KxktfZa5UP+ZhtbqXryYd8rOR19lpjPsrxrO+xZl5rrynWO7vfrud5dNbAM6vP3js7v/NYvKsB+WD7rrZH1CUf8jHC0V3nkA/5uKvtEXXJh3yMcNQ7R3G4f7fT+xpN98wd5+qt03h5azHAITctbrKMkQ/5yGL9bJ313z3yIR9n3WQ5TyZkIov1ljrlQz5a3GQZIx/ysZr1YtamBwz8baD3twfjx/2Oo5fX6+UP8DQmrUCcAAA=
+   H4sIAAAAAAAECu2aW27EIAxF0y5oFtzFdS2VNaJBiAkGHHDgfERJeNlcn5vOpPP6Po4XBxrAAAzAAAzAAAzAAAzAAAzAAAzAAAzAAAzAAAzAAAzAAAzAAAzAAAzAAAzAAAzAAAzAAAzAAAzAAAzAAAzAAAzAwD8DP1/HkR787prfnsPA6YtYi+CVuI1r/LIjA+KF3L4/tefG0pbXEF3euvxmPp+EZ/BTznEtLXIWTeSI1+V6Tz1mczA7/ifu8cj6fpAax8/T9F76vPL5iduR7XhkbY+k7Kf3wlqubSSD3mPhkXU9omFfM8Y7w3fnh0fW9IiGfc2Yu/l7wvp4xIdHpA7xd4aeaw37lvFactXkeOUf6/yv8pG+q/6rPOmz8Zel/pq1NGPurG1PfJnbMz+3r9KauX5p0zwbrHPN5b96m6WG6Vq5OqZjRuvbGl/mtc4t7bG0dtqvzUM7rpTfzv27adiyX5nTMq+Gq1KMuF+bi3ZcTZ67jd1Nw9r9yvjaOa0MlWKFfm0+2nGt+e4wbzcNa/YrY2vGW/BSilnqj3MYnXsce5Vr0VDzXW/GmDs01jJTw6F1nqXYNXuwzm239bRar6KLZr8lPkdo4SGHEfv0HkPDi/c9WObniUtPuVhq/KS18Mf5fySPPHrM6Ul89+aKP97+8Myh59x6+fM+H3+831F51wGPnH/nR3oq5ULuR72rGhkr7Clwlp5Hat4aq0UvmdMaj3lztbuq3VUfddPXTXRES71eT2GLmtrVFI/YaenFP/jDtqZ4xFbP2T7BH/b1xCP2ms7yCf64p5Z4pE5X0Su82+k9p0z3rJ2uNcunq8ZFX51P0Emn02o+kbpT+3Lt0ais0WreCPvBI/naiy7hsxT+yGsUGOK8nz54Yr+a43N9zfGHXiu42k8r/LFfzZ/uc2GWAw1gIM9A+L7M+Xx3gBZoERj4A7PcEVNAnAAA
   </data>
  </layer>
  <layer id="2" name="walls" width="200" height="50" visible="0">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAECu2cUYqFMAxFhdnX2/+yhjLcR5irImptY05hSI2vSXqSi3/z+VmWD38wYAY2Z2BhQQACRkDfDXuBAwIQ+H5PQAEBCDgBvh/OBA8ERAB9iAQWAk4AfTgTPBAQAfQhElgIOAH04UzwQEAE0IdIYCHgBNCHM8EDARFAHyKBhYATQB/OBA8ERAB9iAQWAk4AfTgTPBAQAfQhElgIOAH04UzwQEAE0IdIYCHgBNCHM8EDARF4iz50j2h1RywEzhLQPJ09P8u5do+4/j/Hd+whcJQA+jhKit9VJIA+KnadOx8lMFIfyn3F6p4tRlzx+Ur8u8/GGtnPT0D9H1FpnOEz+eP5uG+x4nPcn8lz15lZ6rjrPhXitJ6N6tvVvKpdNvZLPtn4btS+1cLKRWDk/FSbl2r3zaWE9WrRxzqXHl700YNq35jooy/fGB19RBo59qP1ofyz2R7dQx89qPaNqbnsm2U9erV5qXbf9a7n8qKPXP2i2mcJoI9neZMtFwH0katfVPssAfTxLG+y5SIwkz5Uy5ttrumgWs1iNRLt3ltr793WGfzvJFBVH3vdRB97dGq9Qx/eb/ThTKp60Id3Hn04k6oe9OGdRx/OpKpnpD6U+y4be3g1ZozFvi4BzdEIAi03CwIzE0AfM3eH2kYTeFofyic7+v7kh8AegafntOVjQSALAfSRpVPUOYIA+hhBnZxZCEgf2L//cwQHODADzAAzcHwGfgE2/bazQJwAAA==
+   H4sIAAAAAAAECu2d627DMAhGK+299v6PNVkTi+dLjRtiYnIsTU6xA3wHUP9U2vfX6/XNHwzogW4PvFgQgEBFQL43qgMMEIDA3/cJKCAAgZoA3x81EywQEALMh5Bgh0BNgPmomWCBgBBgPoQEOwRqAsxHzQQLBIQA8yEk2CFQE2A+aiZYICAEmA8hwQ6BmgDzUTPBAgEhwHwICXYI1ASYj5rJXS1Sq3y/a65R8hLWUfRE1dGqU8sWVb+XLhh7kZ+Lm+rUWj176y62eQJPmg/RuvOeV9hSR+6X54OAMD4scZ+SVs/lHb+n/Uk90GPQs0dhIzpGe4/D0+3C7ekcSv1RuCQd+So/p7OWLX/n6c9ResGyjlGYaHpfc8eS7Y6+ovSDFfsoPDS9r7ljxXVnP1F6wqIGniwkttU+4mEV54yfUY7vzs/E7b3biyf3e+dPsXtySLGtlsaX5o5VPi0/Z+Knd8+838vnnc9WTLFp9lbM3Wyi0yPvFNtqlb5EV7lbxfvET5mj1odo0N6fuTfyXZ5rNWjvzeTqcbfUvzKHKAy1zD7Ru6I+oxj5uVaD9p6Wnde9XPvqHKIw1HKb1buyNqNYcq7VoL2nZed1T3R7xI/CUMtuRq9HXUYxR+c5hxmt+Xt3e57RbJ27xL7jbq01+dP2jPC4IoeRz1HsGQ2jWDucj3hcqUHL+socVvrW6PWsh7C4Qw6Si/fuyULTL958Vsb3rEWp8065lLmt/OzJgfk4Ku1ZhyOL/093zOl/htd/8mTAfPzW17MGow67c26j3C3OPfUzH8f/7bKo5VU+PHvkKk1av57ay/mQXJ62a2vlee/TmnjmbBFbdFv42slH0t1b785672CvCUTorQga6sqcszAf5/jlb+/eX7vnn9fC6pn5sCL562fnHts5d9sqHt6Yj4OF1dOufbZr3lZ1a/lhPlpUztt27DXPnCW21Z5X8KzP3BfPdgSkLnYer/XkmW+KzXoeAc+em6XtmSvzMVutOPc9+26G4uo8JZ7sM7lyFwKrCazu0xSPBYFdCDAfu1SKPD0IMB8e1Im5CwGZD/bjt7SwgAU9QA/QA7oe+AEcezOXQJwAAA==
   </data>
  </layer>
  <objectgroup id="3" name="objects">
-  <object id="10" name="PressurePlate3" type="PressurePlateObj" x="1186.46" y="552.512" width="40" height="8"/>
-  <object id="12" name="Switch11" type="SwitchObj" x="906.333" y="601.667" width="25" height="25"/>
-  <object id="15" name="DoorMechanism2" type="TrapDoorObj" x="800.67" y="654.667" width="50" height="20"/>
-  <object id="9" name="DoorMechanism12" type="DoorObj" x="976.289" y="588.846" width="30" height="70"/>
-  <object id="13" name="Box1" type="BoxObj" x="539.667" y="428" width="32" height="32"/>
-  <object id="1" name="Merlin" type="Player" x="66.8858" y="719.357" width="27" height="47"/>
-  <object id="2" name="John1" type="Enemy" x="1007.6" y="608.273" width="33" height="47"/>
   <object id="14" name="EndCrystal" type="EndCrystalObj" x="3065.33" y="709.333" width="56" height="56"/>
-  <object id="16" name="Switch2" type="SwitchObj" x="817.5" y="510.167" width="25" height="25"/>
+  <object id="15" name="DoorMechanism2" type="TrapDoorObj" x="800.67" y="654.667" width="50" height="20"/>
+  <object id="9" name="DoorMechanism12" type="DoorObj" x="979.289" y="588.846" width="30" height="70"/>
   <object id="17" name="DoorMechanism11" type="TrapDoorObj" x="494" y="558" width="50" height="20"/>
+  <object id="19" name="DoorMechanism31" type="DoorObj" x="1442.67" y="491" width="30" height="70"/>
+  <object id="25" name="DoorMechanism4" type="TrapDoorObj" x="799.833" y="400.667" width="50" height="20"/>
+  <object id="28" name="DoorMechanism5" type="DoorObj" x="853" y="333.5" width="30" height="70"/>
+  <object id="23" name="PressurePlate4" type="PressurePlateObj" x="784.167" y="455.167" width="40" height="8"/>
+  <object id="10" name="PressurePlate3" type="PressurePlateObj" x="1186.46" y="552.512" width="40" height="8"/>
+  <object id="45" name="Switch6" type="SwitchObj" x="1723.5" y="320.083" width="25" height="25"/>
+  <object id="16" name="Switch5" type="SwitchObj" x="811.5" y="321.167" width="25" height="25"/>
+  <object id="30" name="Switch2" type="SwitchObj" x="812" y="505.5" width="25" height="25"/>
+  <object id="12" name="Switch1" type="SwitchObj" x="906.333" y="601.667" width="25" height="25"/>
+  <object id="13" name="Box1" type="BoxObj" x="519.67" y="422" width="32" height="32"/>
+  <object id="26" name="ManaPotion2" type="ManaPotionObj" x="903.333" y="348.167" width="16" height="16"/>
   <object id="18" name="ManaPotion1" type="ManaPotionObj" x="1060.33" y="639.333" width="16" height="16"/>
-  <object id="19" name="DoorMechanism3" type="DoorObj" x="1439.67" y="491" width="30" height="70"/>
-  <object id="20" name="EndKey" type="EndKeyObj" x="144.333" y="702.917" width="16" height="16"/>
+  <object id="27" name="HealPotion2" type="HealingPotionObj" x="635.5" y="432.5" width="16" height="16"/>
+  <object id="22" name="HealPotion1" type="HealingPotionObj" x="244" y="717.333" width="16" height="16"/>
+  <object id="20" name="EndKey" type="EndKeyObj" x="1916.58" y="741.705" width="16" height="16"/>
+  <object id="48" name="DoorMechanism7" type="DoorObj" x="2513.08" y="700.917" width="30" height="70"/>
+  <object id="51" name="ManaPotion5" type="ManaPotionObj" x="1813" y="742" width="16" height="16"/>
+  <object id="50" name="PressurePlate7" type="PressurePlateObj" x="2789.33" y="759.667" width="40" height="8"/>
+  <object id="34" name="ManaPotion3" type="ManaPotionObj" x="1088.67" y="318.667" width="16" height="16"/>
+  <object id="43" name="ManaPotion4" type="ManaPotionObj" x="1727.67" y="249.333" width="16" height="16"/>
+  <object id="33" name="DoorMechanism32" type="DoorObj" x="1439.67" y="301.667" width="30" height="70"/>
+  <object id="35" name="DoorMechanism61" type="TrapDoorObj" x="2238.63" y="463.667" width="50" height="20"/>
+  <object id="36" name="DoorMechanism62" type="TrapDoorObj" x="2288.76" y="463.695" width="50" height="20"/>
+  <object id="37" name="DoorMechanism63" type="TrapDoorObj" x="2338.82" y="463.724" width="50" height="20"/>
+  <object id="44" name="DoorMechanism64" type="TrapDoorObj" x="1710.88" y="272.375" width="50" height="20"/>
+  <object id="47" name="HealPotion4" type="HealingPotionObj" x="1868" y="742.667" width="16" height="16"/>
+  <object id="46" name="HealPotion3" type="HealingPotionObj" x="1902.67" y="326.667" width="16" height="16"/>
+  <object id="49" name="Box2" type="BoxObj" x="2299.33" y="417" width="32" height="32"/>
+  <object id="2" name="John1" type="Enemy" x="1014.1" y="608.273" width="33" height="47"/>
+  <object id="31" name="John2" type="Enemy" x="808" y="332" width="33" height="47"/>
+  <object id="32" name="John3" type="Enemy" x="1193.17" y="307.166" width="33" height="47"/>
+  <object id="41" name="John4" type="Enemy" x="2258.51" y="407.5" width="33" height="47"/>
+  <object id="42" name="John5" type="Enemy" x="2341.5" y="406.833" width="33" height="47"/>
+  <object id="1" name="Merlin" type="Player" x="164.22" y="715.857" width="27" height="47"/>
  </objectgroup>
 </map>

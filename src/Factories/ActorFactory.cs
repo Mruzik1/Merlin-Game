@@ -31,9 +31,7 @@ namespace MyGame.Factories
             else if (actorType == "BoxObj")
             {
                 actor = new Box(x, y);
-                
                 actor.SetPhysics(true);
-                (actor as AbstractCharacter).SetInvincibility(100);
             }
 
             else if (actorType.Contains("DoorObj"))
@@ -52,7 +50,7 @@ namespace MyGame.Factories
                 actor = new HealingPotion(x, y, 30);
 
             else if (actorType == "ManaPotionObj")
-                actor = new ManaPotion(x, y, 75);
+                actor = new ManaPotion(x, y, 120);
             
             else if (actorType == "EndKeyObj")
                 actor = new EndKey(x, y);
