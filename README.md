@@ -1,4 +1,5 @@
 # Merlin-Game
+A game made by using a university library named MerlinCore
 ## Spells
 Press on the number keys to use spells:
   - **1** *- Fireball*
