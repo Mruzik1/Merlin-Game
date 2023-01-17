@@ -1,5 +1,5 @@
 # Merlin-Game
-A game made by using a university library named <a href="https://github.com/Kellei2983/MerlinCore">MerlinCore</a>
+A game made using a university library <a href="https://github.com/Kellei2983/MerlinCore">MerlinCore</a>.
 ## Spells
 Press on the number keys to use spells:
   - **1** *- Fireball*
