@@ -1,5 +1,4 @@
 # Merlin-Game
-*by Mykhailo Ruzmetov*
 ## Spells
 Press on the number keys to use spells:
   - **1** *- Fireball*
